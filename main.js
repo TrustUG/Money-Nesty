@@ -15,7 +15,7 @@ $(document).ready(function () {
     }
   }
 
-  // Load theme from localStorage
+  // Load saved theme
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
     $("body").addClass("light-theme");
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
   updateThemeUI();
 
-  // Toggle theme on click
+  // On click toggle
   $("#theme").on("click", function () {
     $("body").toggleClass("light-theme");
 
