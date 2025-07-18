@@ -15,16 +15,16 @@
 :root {
   --bg-color: #000000;
   --bgtext-color: #141414;
-  --sec-bg-color: #1a1a1a;
-  --sec-hover-color: #272727;
-  --card-color: #1a1a1a;
-  --sec2-bg-color: #4d4d4d;
+  --sec-bg-color: #131313;
+  --sec-hover-color: #1b1b1b;
+  --card-color: #131313;
+  --sec2-bg-color: #333333;
   --text-color: #f1f1f1;
-  --para-color: #efefef;
+  --para-color: #a1a1a1;
   --para2-color: #cccccc;
   --placeholder-color: #999999;
   --icon-color: #646774;
-  --box-shadow: 0 0 1rem #000000;
+  --box-shadow: 0 0 1rem #00000000;
   --main-color: #42cc49;
 }
 
@@ -32,15 +32,15 @@
 .light-theme {
   --bg-color: #ffffff;
   --sec-bg-color: #eceef2;
-  --sec-hover-color: #e0e3e7;
+  --sec-hover-color: #e8ebf0;
   --card-color: #ffffff;
-  --sec2-bg-color: #ced4e0;
+  --sec2-bg-color: #e0e4ec;
   --text-color: #404256;
   --para-color: #7f8196;
   --para2-color: #686a79;
   --placeholder-color: #7c7e98;
   --icon-color: #646774;
-  --box-shadow: 0 0 1rem #000000;
+  --box-shadow: 0 0 3rem #ebebeb;
   --main-color: #81ef87;
 }
 
@@ -53,7 +53,7 @@
 ::-webkit-scrollbar-thumb {
   background: var(--sec-bg-color);
   -webkit-border-radius: 30rem;
-  -webkit-box-shadow: 0rem 0rem 0rem rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0rem 0rem 1rem #000000bf;
 }
 
 ::-webkit-scrollbar-corner {
@@ -67,7 +67,7 @@ body {
 }
 
 html {
-  /* font-size: 90%; */
+  /* font-size: 95%; */
 }
 
 .header-cont {
@@ -208,31 +208,48 @@ html {
 
 /* top cards  */
 .cards-wallper {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: auto;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-top: 6.8rem;
+  justify-content: space-around;
+  margin-top: 4rem;
+  flex-wrap: nowrap;
+  border-radius: 1.4rem;
+  padding: 2rem 0.5rem;
+}
+
+.cards-wallper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .cards-wallper .card {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: start;
-  background-color: var(--sec-bg-color);
+  background-color: var(--card-color);
   cursor: pointer;
-  padding: 0.9rem;
-  width: 17.5rem;
+  padding: 0.7rem 0.5rem 0.7rem 1.3rem;
+  width: 17rem;
   border-radius: 1.5rem;
   gap: 1.3rem;
-  
+  box-shadow: var(--box-shadow);
+}
+
+.cards-wallper .card:hover {
+  background-color: var(--sec-hover-color);
+  transform: translateY(-0.2rem);
 }
 
 .cards-wallper .card .image-cont {
-  width: 4rem;
-  height: 4rem;
-  border: solid .4rem var(--sec2-bg-color);
+  width: 4.5rem;
+  height: 4.5rem;
+  border: solid 0.4rem var(--sec2-bg-color);
   border-radius: 50%;
 }
 
@@ -240,16 +257,60 @@ html {
   width: 100%;
 }
 
+.cards-wallper .card .cont {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
 .cards-wallper .card .cont h2 {
   font-size: 1rem;
-  font-weight: 450;
+  font-weight: 470;
   text-transform: capitalize;
 }
 
-#dis {
+.cards-wallper .card .cont #dis {
   color: var(--para-color);
   display: flex;
   align-items: center;
   justify-content: start;
-  background-color: red;
+  color: var(--para-color);
+  font-size: 0.75rem;
+  gap: 0.3rem;
+}
+
+.cards-wallper .card .cont #dis .icon svg {
+  stroke: var(--para-color);
+  stroke-width: 0.07rem;
+  width: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* top info */
+.filter {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.filter h2 {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 470;
+  b
+}
+
+.filter h2 span {
+  font-size: 0.95rem;
+  background-color: var(--sec-bg-color);
+  padding: .1rem 1rem;
+  border-radius: 50rem;
 }
