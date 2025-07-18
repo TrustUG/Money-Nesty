@@ -6,7 +6,7 @@
   font-family: poppins;
   border: none;
   outline: none;
-  /* letter-spacing: 0.015rem; */
+  letter-spacing: 0.015rem;
   list-style: none;
   scroll-behavior: smooth;
   transition: 0.4s ease-in-out;
@@ -22,7 +22,7 @@
   --sec2-bg-color: #202020;
   --text-color: #f1f1f1;
   --para-color: #a1a1a1;
-  --para2-color: #cccccc;
+  --para2-color: #a0a0a0;
   --placeholder-color: #999999;
   --icon-color: #646774;
   --box-shadow: 0 0 1rem #00000000;
@@ -33,7 +33,7 @@
 .light-theme {
   --bg-color: #ffffff;
   --sec-bg-color: #eceef2;
-  --sec-hover-color: #e8ebf0;
+  --sec-hover-color: #d5d9df;
   --card-color: #ffffff;
   --sec2-bg-color: #e0e4ec;
   --text-color: #404256;
@@ -68,7 +68,7 @@ body {
 }
 
 html {
-  /* font-size: 93%; */
+  font-size: 98%;
 }
 
 .header-cont {
@@ -161,8 +161,8 @@ html {
 }
 
 .header-cont header .right .theme {
-  height: 2.85rem;
-  width: 2.85rem;
+  height: 2.6rem;
+  width: 2.6rem;
   background-color: var(--sec-bg-color);
   display: flex;
   align-items: center;
@@ -176,6 +176,9 @@ html {
 }
 
 .header-cont header .right .theme svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 1rem;
   stroke: var(--placeholder-color);
   stroke-width: 0.1rem;
@@ -296,7 +299,7 @@ html {
   align-items: center;
   justify-content: space-between;
   margin: 0.5rem auto 0;
-  padding: 0 .7rem;
+  padding: 0 0.7rem;
 }
 
 .filter h2 {
@@ -315,7 +318,7 @@ html {
   font-size: 0.75rem;
   background-color: var(--sec2-bg-color);
   padding: 0.01rem 0.8rem;
-  margin-top: 0.2rem;
+  margin-top: 0.1rem;
   border-radius: 50rem;
   cursor: pointer;
 }
@@ -374,4 +377,66 @@ html {
   justify-content: center;
   rotate: 270deg;
   margin-left: -0.1rem;
+}
+
+/* chips  */
+.chips-wallper {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: auto;
+  max-width: 1170px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin: 2rem auto 0;
+  gap: 0.8rem;
+  border-radius: .5rem;
+}
+
+.chips-wallper::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.chips-wallper .chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--sec-bg-color);
+  padding: 0.2rem 1rem 0.2rem 0.8rem;
+  border-radius: 50rem;
+  cursor: pointer;
+  gap: 0.35rem;
+  /* box-shadow: var(--box-shadow); */
+}
+
+.chips-wallper .chip:hover {
+  background-color: var(--sec-hover-color);
+}
+
+.chips-wallper .chip svg {
+  stroke: var(--para-color);
+  stroke-width: 0.08rem;
+  width: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chips-wallper .chip .fill {
+  stroke-width: 0;
+}
+
+.chips-wallper .chip .fill1 {
+  fill: #e0bf00;
+}
+
+.chips-wallper .chip .fill2 {
+  fill: #ff1f1f;
+}
+
+.chips-wallper .chip .text {
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  color: var(--para2-color);
+  font-weight: 300;
 }
