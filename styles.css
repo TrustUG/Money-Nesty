@@ -16,9 +16,10 @@
   --bg-color: #000000;
   --bgtext-color: #141414;
   --sec-bg-color: #1a1a1a;
+  --sec-hover-color: #272727;
   --card-color: #1a1a1a;
   --sec2-bg-color: #4d4d4d;
-  --text-color: #f9f9f9;
+  --text-color: #f1f1f1;
   --para-color: #efefef;
   --para2-color: #cccccc;
   --placeholder-color: #999999;
@@ -31,8 +32,9 @@
 .light-theme {
   --bg-color: #ffffff;
   --sec-bg-color: #eceef2;
+  --sec-hover-color: #e0e3e7;
   --card-color: #ffffff;
-  --sec2-bg-color: #4d4d4d;
+  --sec2-bg-color: #ced4e0;
   --text-color: #404256;
   --para-color: #7f8196;
   --para2-color: #686a79;
@@ -115,6 +117,10 @@ html {
   gap: 0.7rem;
 }
 
+.header-cont header .search:hover {
+  background-color: var(--sec-hover-color);
+}
+
 .header-cont header .search .icon svg {
   width: 1.2rem;
   margin-top: 0.4rem;
@@ -164,8 +170,12 @@ html {
   cursor: pointer;
 }
 
+.header-cont header .right .theme:hover {
+  background-color: var(--sec-hover-color);
+}
+
 .header-cont header .right .theme svg {
-  width: 1.1rem;
+  width: 1rem;
   stroke: var(--placeholder-color);
   stroke-width: 0.1rem;
 }
@@ -180,7 +190,7 @@ html {
   gap: 0.5rem;
   border-radius: 50rem;
   color: var(--bgtext-color);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   text-transform: capitalize;
 }
 
@@ -194,4 +204,52 @@ html {
   width: 1.2rem;
   stroke-width: 0.1rem;
   stroke: var(--bgtext-color);
+}
+
+/* top cards  */
+.cards-wallper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6.8rem;
+}
+
+.cards-wallper .card {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: var(--sec-bg-color);
+  cursor: pointer;
+  padding: 0.9rem;
+  width: 17.5rem;
+  border-radius: 1.5rem;
+  gap: 1.3rem;
+  
+}
+
+.cards-wallper .card .image-cont {
+  width: 4rem;
+  height: 4rem;
+  border: solid .4rem var(--sec2-bg-color);
+  border-radius: 50%;
+}
+
+.cards-wallper .card .image-cont img {
+  width: 100%;
+}
+
+.cards-wallper .card .cont h2 {
+  font-size: 1rem;
+  font-weight: 450;
+  text-transform: capitalize;
+}
+
+#dis {
+  color: var(--para-color);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: red;
 }

@@ -34,4 +34,34 @@ $(document).ready(function () {
 
     updateThemeUI();
   });
+
+  const $input = $("#searchInput");
+  const $placeholder = $(".header-cont header .search .placeholder-text");
+  const $icon = $(".header-cont header .search .icon svg");
+
+  function toggleSearchExtras() {
+    if ($input.is(":focus") || $input.val().length > 0) {
+      $placeholder.stop(true, true).fadeOut(200);
+      $icon.stop(true, true).fadeOut(200);
+    } else {
+      $placeholder.stop(true, true).fadeIn(200);
+      $icon.stop(true, true).fadeIn(200);
+    }
+  }
+
+  // Initial check
+  toggleSearchExtras();
+
+  // Toggle extras on focus/input/blur
+  $input.on("focus input blur", toggleSearchExtras);
+
+  // Clear input and blur on Enter
+  $input.on("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault(); // stop form from submitting
+      $input.val(""); // clear input
+      $input.blur(); // remove focus
+      toggleSearchExtras(); // restore placeholder/icon
+    }
+  });
 });
