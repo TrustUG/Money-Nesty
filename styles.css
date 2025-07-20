@@ -512,3 +512,13 @@ main article a .read-time span {
   color: var(--para-color);
   font-size: 0.67rem;
 }
+
+main article a h1 {
+  color: var(--text-color);
+  font-size: 1.05rem;
+  max-width: 15rem;
+}
+
+main article a p {
+  
+}
