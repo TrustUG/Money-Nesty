@@ -68,7 +68,7 @@ body {
 }
 
 html {
-  font-size: 98%;
+  /* font-size: 98%; */
 }
 
 .header-cont {
@@ -427,7 +427,7 @@ html {
 }
 
 .chips-wallper .chip .fill1 {
-  fill: #e0bf00;
+  fill: #ffcc23;
 }
 
 .chips-wallper .chip .fill2 {
