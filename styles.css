@@ -19,7 +19,7 @@
   --sec-bg-color: #131313;
   --sample-image-bg-color: #d9d9d913;
   --sec-hover-color: #1b1b1b;
-  --card-color: #131313;
+  --card-color: #0c0c0c;
   --sec2-bg-color: #202020;
   --text-color: #e0e0e0;
   --para-color: #a1a1a1;
@@ -35,7 +35,7 @@
   --bg-color: #ffffff;
   --sec-bg-color: #eceef2;
   --sample-image-bg-color: #d9d9d9;
-  --sec-hover-color: #d5d9df;
+  --sec-hover-color: #f5faff;
   --card-color: #ffffff;
   --sec2-bg-color: #e0e4ec;
   --text-color: #404256;
@@ -78,11 +78,75 @@ a {
 }
 
 .header-cont {
+  height: 11rem;
+  background-color: var(--bg-color);
+  z-index: 9999;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 1.5rem 2rem 0;
+  transition: height 0.4s ease-in-out;
+}
+
+#search-bar-mob.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header-cont.shrink {
+  height: 7rem;
+}
+
+.header-cont #search-bar-mob {
+  display: none;
+  max-width: 1200px;
+  margin: 0.8rem auto 0;
+  align-items: center;
+  background-color: var(--sec-bg-color);
+  height: 3.2rem;
+  border-radius: 50rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  cursor: text;
+  justify-content: center;
+  gap: 0.7rem;
+}
+
+.header-cont #search-bar-mob:hover {
+  background-color: var(--sec-hover-color);
+}
+
+.header-cont #search-bar-mob .icon svg {
+  width: 1.2rem;
+  margin-top: 0.4rem;
+  stroke: var(--placeholder-color);
+}
+
+.header-cont #search-bar-mob input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: transparent;
+  width: 100%;
+  padding: 0 2.3rem 0;
+  color: var(--text-color);
+  font-family: poppins;
+  font-size: 0.9rem;
+}
+
+.header-cont #search-bar-mob .placeholder-text {
+  color: var(--placeholder-color);
+  font-size: 0.85rem;
+  font-weight: 300;
+}
+
+.header-cont #search-bar-mob .placeholder-text {
+  color: var(--placeholder-color);
+  font-size: 0.85rem;
+  font-weight: 300;
 }
 
 .header-cont header {
@@ -220,7 +284,7 @@ a {
 .cards-wallper {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
-  /* overflow-y: auto; */
+  overflow-y: auto;
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -449,8 +513,16 @@ a {
 
 /* blogs links  */
 main {
+  padding: 0 0.3rem;
   max-width: 1170px;
   margin: 2rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+main article {
+  /* width: 10rem; */
 }
 
 main article a {
@@ -458,14 +530,19 @@ main article a {
   flex-direction: column;
   background-color: var(--card-color);
   box-shadow: var(--box-shadow);
-  padding: 0.8rem;
-  border-radius: 2.3rem;
+  padding: 0.8rem 0.8rem 1.3rem;
+  border-radius: 1.95rem;
+  width: auto;
+}
+
+main article a:hover {
+  transform: translateY(-0.2rem);
 }
 
 main article a .image-cont {
   background-color: var(--sample-image-bg-color);
-  height: 10rem;
-  width: 16rem;
+  height: 9.2rem;
+  width: 100%;
   border-radius: 1.7rem;
   overflow: hidden;
   position: relative;
@@ -482,11 +559,12 @@ main article a .image-cont .tag {
   color: var(--text-color);
   bottom: 1rem;
   left: 1rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.2rem 0.7rem;
   border-radius: 50rem;
 }
 
 main article a .read-time {
+  margin-left: 0.3rem;
   display: flex;
   align-items: center;
   margin-top: 0.7rem;
@@ -514,11 +592,75 @@ main article a .read-time span {
 }
 
 main article a h1 {
+  margin-left: 0.3rem;
   color: var(--text-color);
-  font-size: 1.05rem;
-  max-width: 15rem;
+  font-size: 0.96rem;
+  font-weight: 550;
+  max-width: 14.35rem;
+  line-height: 1.5rem;
+  margin-top: 0.3rem;
 }
 
 main article a p {
-  
+  margin-left: 0.3rem;
+  font-size: 0.78rem;
+  margin-top: 0.3rem;
+  /* background-color: red; */
+  max-width: 14.35rem;
+  font-weight: 300;
+  color: var(--para-color);
+}
+
+main article .publisher {
+  padding: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.6rem;
+}
+
+main article .publisher .info {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+main article .publisher .info .image {
+  background-color: var(--sample-image-bg-color);
+  height: 2.1rem;
+  width: 2.1rem;
+  border-radius: 50rem;
+  border: solid 0.15rem var(--sec2-bg-color);
+}
+
+main article .publisher .info .dis {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+main article .publisher .info .dis .name {
+  font-size: 0.65rem;
+  text-transform: capitalize;
+}
+
+main article .publisher .info .dis .date {
+  font-size: 0.55rem;
+  color: var(--para-color);
+}
+
+main article .publisher .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+main article .publisher .actions svg {
+  stroke: var(--para-color);
+  stroke-width: 0.05rem;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
