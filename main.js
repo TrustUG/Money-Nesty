@@ -64,27 +64,210 @@ $(document).ready(function () {
       toggleSearchExtras(); // restore placeholder/icon
     }
   });
+
+  // scroll search
+  let lastScrollTop = 0;
+
+  $(window).on("scroll", function () {
+    // Only run on screens <= 462px
+    if (window.matchMedia("(max-width: 462px)").matches) {
+      const st = $(this).scrollTop();
+      const $header = $(".header-cont");
+      const $searchBar = $(".header-cont #search-bar-mob");
+
+      if (st > lastScrollTop) {
+        // Scrolling down
+        $searchBar.fadeOut(200);
+        $header.css("height", "6.3rem");
+      } else {
+        // Scrolling up
+        $searchBar.fadeIn(200);
+        $header.css("height", "10.5rem");
+      }
+
+      lastScrollTop = st;
+    }
+  });
+
+  // prevent click
+  $(".blog-card .actions svg").on("click", function (e) {
+    e.preventDefault(); // Stops link jump
+    e.stopPropagation(); // Stops bubbling to <a>
+
+    // Do something (like toggle)
+    $(this).toggleClass("active");
+  });
 });
 
-let lastScrollTop = 0;
+// chips
+$(document).ready(function () {
+  // Step 1: Automatically add data-filter from .text inside .chip
+  $(".chip").each(function () {
+    const label = $(this).find(".text").text().toLowerCase().trim();
+    $(this).attr("data-filter", label);
+  });
 
-$(window).on("scroll", function () {
-  // Only run on screens <= 462px
-  if (window.matchMedia("(max-width: 462px)").matches) {
-    const st = $(this).scrollTop();
-    const $header = $(".header-cont");
-    const $searchBar = $(".header-cont #search-bar-mob");
+  // Step 2: Handle chip clicks for filtering
+  $(".chip").click(function () {
+    const selected = $(this).data("filter");
 
-    if (st > lastScrollTop) {
-      // Scrolling down
-      $searchBar.fadeOut(200);
-      $header.css("height", "6.3rem");
+    // Add active class to clicked chip
+    $(".chip").removeClass("active");
+    $(this).addClass("active");
+
+    // Show/hide blog cards
+    $(".blog-card").each(function () {
+      const tag = $(this).find(".tag").text().toLowerCase().trim();
+
+      if (selected === "all" || tag === selected) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+
+  // For each blog card, setup favorite and like toggle with localStorage
+  $(".blog-card").each(function (index) {
+    const $card = $(this);
+
+    // Cache the SVG paths inside favorites and like icons
+    const $favPath = $card.find(".favorites-icon path");
+    const $likePath = $card.find(".like-icon path");
+
+    // Create localStorage keys unique per card
+    const favKey = "favorite-" + index;
+    const likeKey = "like-" + index;
+
+    // Load saved state and apply styles
+    if (localStorage.getItem(favKey) === "true") {
+      $favPath.css({ fill: "#ffcc23", strokeWidth: 0 });
     } else {
-      // Scrolling up
-      $searchBar.fadeIn(200);
-      $header.css("height", "10.5rem");
+      $favPath.css({ fill: "none", strokeWidth: "0.04rem" });
     }
 
-    lastScrollTop = st;
+    if (localStorage.getItem(likeKey) === "true") {
+      $likePath.css({ fill: "#df1c1cff", strokeWidth: 0 });
+    } else {
+      $likePath.css({ fill: "none", strokeWidth: "0.04rem" });
+    }
+
+    // Favorite click handler
+    $card.find(".favorites-icon").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isActive =
+        $favPath.css("fill") !== "none" && $favPath.css("fill") !== "";
+
+      if (isActive) {
+        // Toggle off
+        $favPath.css({ fill: "none", strokeWidth: "0.04rem" });
+        localStorage.setItem(favKey, "false");
+      } else {
+        // Toggle on
+        $favPath.css({ fill: "#ffcc23", strokeWidth: 0 });
+        localStorage.setItem(favKey, "true");
+      }
+    });
+
+    // Like click handler
+    $card.find(".like-icon").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isActive =
+        $likePath.css("fill") !== "none" && $likePath.css("fill") !== "";
+
+      if (isActive) {
+        // Toggle off
+        $likePath.css({ fill: "none", strokeWidth: "0.04rem" });
+        localStorage.setItem(likeKey, "false");
+      } else {
+        // Toggle on
+        $likePath.css({ fill: "#b80000ff", strokeWidth: 0 });
+        localStorage.setItem(likeKey, "true");
+      }
+    });
+  });
+
+  // Assign data-filter attribute automatically from chip text
+  $(".chip").each(function () {
+    const label = $(this).find(".text").text().toLowerCase().trim();
+    $(this).attr("data-filter", label);
+  });
+
+  // Handle chip clicks for filtering blog cards
+  $(".chip").click(function () {
+    const selectedFilter = $(this).data("filter");
+
+    // Add 'active' class to clicked chip, remove from others
+    $(".chip").removeClass("active");
+    $(this).addClass("active");
+
+    // Show/hide blog cards based on tag match
+    $(".blog-card").each(function () {
+      const tag = $(this).find(".tag").text().toLowerCase().trim();
+
+      if (selectedFilter === "all" || tag === selectedFilter) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+
+  // Load liked IDs from localStorage or empty array
+  function getLikedIDs() {
+    const liked = localStorage.getItem("likedPosts");
+    return liked ? JSON.parse(liked) : [];
   }
+
+  // Show only liked cards based on localStorage
+  function showLikedCards() {
+    const likedIDs = getLikedIDs();
+
+    $(".blog-card").each(function () {
+      const id = $(this).attr("id"); // make sure each blog-card has unique id
+      if (likedIDs.includes(id)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  }
+
+  // Your filter chips click handler
+  $(".filter-chip").click(function () {
+    $(".chip, .filter-chip").removeClass("active");
+    $(this).addClass("active");
+
+    if ($(this).is("#filter-liked")) {
+      showLikedCards();
+    } else if ($(this).is("#filter-favorited")) {
+      // handle favorites similarly if needed
+    } else {
+      // handle other filters if any
+      $(".blog-card").show();
+    }
+  });
+
+  // Example toggle for like icon -- update localStorage on toggle
+  $(".blog-card .actions .like-icon").click(function () {
+    const $card = $(this).closest(".blog-card");
+    const id = $card.attr("id");
+    let likedIDs = getLikedIDs();
+
+    if ($card.hasClass("liked")) {
+      // Remove like
+      likedIDs = likedIDs.filter((item) => item !== id);
+      $card.removeClass("liked");
+    } else {
+      // Add like
+      likedIDs.push(id);
+      $card.addClass("liked");
+    }
+
+    localStorage.setItem("likedPosts", JSON.stringify(likedIDs));
+  });
 });
