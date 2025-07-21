@@ -1,6 +1,16 @@
-@media (max-width: 1560px) {
+@media (max-width: 1284px) {
   html {
     font-size: 98%;
+  }
+
+  .cards-wallper {
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 1560px) {
+  html {
+    font-size: 96%;
   }
 }
 
@@ -199,6 +209,10 @@
 @media (max-width: 462px) {
   html {
     font-size: 72%;
+  }
+
+  .header-cont {
+    padding: 0rem 2rem 0;
   }
 
   /* blogs links  */

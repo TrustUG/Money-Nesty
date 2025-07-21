@@ -69,19 +69,22 @@ $(document).ready(function () {
 let lastScrollTop = 0;
 
 $(window).on("scroll", function () {
-  const st = $(this).scrollTop();
-  const $header = $(".header-cont");
-  const $searchBar = $(".header-cont #search-bar-mob");
+  // Only run on screens <= 462px
+  if (window.matchMedia("(max-width: 462px)").matches) {
+    const st = $(this).scrollTop();
+    const $header = $(".header-cont");
+    const $searchBar = $(".header-cont #search-bar-mob");
 
-  if (st > lastScrollTop) {
-    // Scrolling down
-    $searchBar.fadeOut(200);
-    $header.css("height", "7rem");
-  } else {
-    // Scrolling up
-    $searchBar.fadeIn(200);
-    $header.css("height", "11rem");
+    if (st > lastScrollTop) {
+      // Scrolling down
+      $searchBar.fadeOut(200);
+      $header.css("height", "6.3rem");
+    } else {
+      // Scrolling up
+      $searchBar.fadeIn(200);
+      $header.css("height", "10.5rem");
+    }
+
+    lastScrollTop = st;
   }
-
-  lastScrollTop = st;
 });
