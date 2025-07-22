@@ -33,6 +33,7 @@
   --box-shadow: 0 0 1rem #00000000;
   --main-color: #42cc49;
   --main-color-hover: #15d81f;
+  --mark-color: #bd9700;
 }
 
 /* light color  */
@@ -51,6 +52,7 @@
   --box-shadow: 0 0 3rem #ebebeb;
   --main-color: #81ef87;
   --main-color-hover: #5ddd63;
+  --mark-color: #ffcc00;
 }
 
 /* scroll bar  */
@@ -490,25 +492,11 @@ a {
   /* box-shadow: var(--box-shadow); */
 }
 
-.chips-wallper .action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--sec-bg-color);
-  padding: 0.1rem 1rem 0.2rem 0.8rem;
-  border-radius: 50rem;
-  cursor: pointer;
-  gap: 0.35rem;
-  /* box-shadow: var(--box-shadow); */
-}
-
-.chips-wallper .chip:hover,
-.chips-wallper .action:hover {
+.chips-wallper .chip:hover {
   background-color: var(--sec-hover-color);
 }
 
-.chips-wallper .chip svg,
-.chips-wallper .action svg {
+.chips-wallper .chip svg {
   stroke: var(--para-color);
   stroke-width: 0.04rem;
   width: 1.05rem;
@@ -517,15 +505,15 @@ a {
   justify-content: center;
 }
 
-.chips-wallper .action .fill {
+.chips-wallper .chip .fill {
   stroke-width: 0;
 }
 
-.chips-wallper .action .fill1 {
+.chips-wallper .chip .fill1 {
   fill: #ffcc23;
 }
 
-.chips-wallper .action .fill2 {
+.chips-wallper .chip .fill2 {
   fill: #ff1f1f;
 }
 
@@ -537,6 +525,13 @@ a {
 }
 
 .chip.active {
+}
+
+mark {
+  background-color: var(--mark-color);
+  color: inherit;
+  padding: 0 0.2em;
+  border-radius: 50rem;
 }
 
 .chips-wallper .chip .text,
@@ -553,7 +548,8 @@ main {
   max-width: 1160px;
   margin: 2rem auto 0;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 2.5rem;
   flex-wrap: nowrap;
 }
 

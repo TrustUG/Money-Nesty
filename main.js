@@ -35,12 +35,16 @@ $(document).ready(function () {
     updateThemeUI();
   });
 
-  // hide search desk
-  const $input = $("#searchInput");
-  const $placeholder = $(".header-cont header .search .placeholder-text");
-  const $icon = $(".header-cont header .search .icon svg");
+  // hide search desk & mobile
+  const $inputDesk = $("#searchInput");
+  const $placeholderDesk = $(".header-cont header .search .placeholder-text");
+  const $iconDesk = $(".header-cont header .search .icon svg");
 
-  function toggleSearchExtras() {
+  const $inputMob = $("#searchInputMob");
+  const $placeholderMob = $("#search-bar-mob .placeholder-text");
+  const $iconMob = $("#search-bar-mob .icon svg");
+
+  function toggleSearchExtras($input, $placeholder, $icon) {
     if ($input.is(":focus") || $input.val().length > 0) {
       $placeholder.stop(true, true).fadeOut(200);
       $icon.stop(true, true).fadeOut(200);
@@ -50,19 +54,37 @@ $(document).ready(function () {
     }
   }
 
-  // Initial check
-  toggleSearchExtras();
+  // Initial check for both inputs
+  toggleSearchExtras($inputDesk, $placeholderDesk, $iconDesk);
+  toggleSearchExtras($inputMob, $placeholderMob, $iconMob);
 
-  // Toggle extras on focus/input/blur
-  $input.on("focus input blur", toggleSearchExtras);
+  // Toggle extras on focus/input/blur for desktop
+  $inputDesk.on("focus input blur", function () {
+    toggleSearchExtras($inputDesk, $placeholderDesk, $iconDesk);
+  });
 
-  // Clear input and blur on Enter
-  $input.on("keydown", function (e) {
+  // Toggle extras on focus/input/blur for mobile
+  $inputMob.on("focus input blur", function () {
+    toggleSearchExtras($inputMob, $placeholderMob, $iconMob);
+  });
+
+  // Clear input and blur on Enter for desktop
+  $inputDesk.on("keydown", function (e) {
     if (e.key === "Enter") {
       e.preventDefault(); // stop form from submitting
-      $input.val(""); // clear input
-      $input.blur(); // remove focus
-      toggleSearchExtras(); // restore placeholder/icon
+      $inputDesk.val(""); // clear input
+      $inputDesk.blur(); // remove focus
+      toggleSearchExtras($inputDesk, $placeholderDesk, $iconDesk);
+    }
+  });
+
+  // Clear input and blur on Enter for mobile
+  $inputMob.on("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault(); // stop form from submitting
+      $inputMob.val(""); // clear input
+      $inputMob.blur(); // remove focus
+      toggleSearchExtras($inputMob, $placeholderMob, $iconMob);
     }
   });
 
@@ -90,7 +112,7 @@ $(document).ready(function () {
     }
   });
 
-  // prevent click
+  // prevent click on blog-card action icons
   $(".blog-card .actions svg").on("click", function (e) {
     e.preventDefault(); // Stops link jump
     e.stopPropagation(); // Stops bubbling to <a>
@@ -192,12 +214,6 @@ $(document).ready(function () {
     });
   });
 
-  // Assign data-filter attribute automatically from chip text
-  $(".chip").each(function () {
-    const label = $(this).find(".text").text().toLowerCase().trim();
-    $(this).attr("data-filter", label);
-  });
-
   // Handle chip clicks for filtering blog cards
   $(".chip").click(function () {
     const selectedFilter = $(this).data("filter");
@@ -216,59 +232,5 @@ $(document).ready(function () {
         $(this).hide();
       }
     });
-  });
-
-  // Load liked IDs from localStorage or empty array
-  function getLikedIDs() {
-    const liked = localStorage.getItem("likedPosts");
-    return liked ? JSON.parse(liked) : [];
-  }
-
-  // Show only liked cards based on localStorage
-  function showLikedCards() {
-    const likedIDs = getLikedIDs();
-
-    $(".blog-card").each(function () {
-      const id = $(this).attr("id"); // make sure each blog-card has unique id
-      if (likedIDs.includes(id)) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    });
-  }
-
-  // Your filter chips click handler
-  $(".filter-chip").click(function () {
-    $(".chip, .filter-chip").removeClass("active");
-    $(this).addClass("active");
-
-    if ($(this).is("#filter-liked")) {
-      showLikedCards();
-    } else if ($(this).is("#filter-favorited")) {
-      // handle favorites similarly if needed
-    } else {
-      // handle other filters if any
-      $(".blog-card").show();
-    }
-  });
-
-  // Example toggle for like icon -- update localStorage on toggle
-  $(".blog-card .actions .like-icon").click(function () {
-    const $card = $(this).closest(".blog-card");
-    const id = $card.attr("id");
-    let likedIDs = getLikedIDs();
-
-    if ($card.hasClass("liked")) {
-      // Remove like
-      likedIDs = likedIDs.filter((item) => item !== id);
-      $card.removeClass("liked");
-    } else {
-      // Add like
-      likedIDs.push(id);
-      $card.addClass("liked");
-    }
-
-    localStorage.setItem("likedPosts", JSON.stringify(likedIDs));
   });
 });
