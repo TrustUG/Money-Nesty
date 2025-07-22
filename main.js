@@ -35,6 +35,7 @@ $(document).ready(function () {
     updateThemeUI();
   });
 
+  // hide search desk
   const $input = $("#searchInput");
   const $placeholder = $(".header-cont header .search .placeholder-text");
   const $icon = $(".header-cont header .search .icon svg");
