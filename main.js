@@ -93,7 +93,7 @@ $(document).ready(function () {
 
   $(window).on("scroll", function () {
     // Only run on screens <= 462px
-    if (window.matchMedia("(max-width: 462px)").matches) {
+    if (window.matchMedia("(max-width: 626px)").matches) {
       const st = $(this).scrollTop();
       const $header = $(".header-cont");
       const $searchBar = $(".header-cont #search-bar-mob");
