@@ -1,27 +1,35 @@
-const cardsWallper = document.querySelector(".cards-wallper");
-const chipsWallper = document.querySelector(".chips-wallper");
+// Wait until the page has loaded everything
+document.addEventListener("DOMContentLoaded", () => {
+  // Handle cards-wallper (only one expected)
+  const cardsWallper = document.querySelector(".cards-wallper");
+  if (cardsWallper) {
+    cardsWallper.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          cardsWallper.scrollLeft += e.deltaY;
+        }
+      },
+      { passive: false }
+    );
+  }
 
-cardsWallper.addEventListener(
-  "wheel",
-  (e) => {
-    if (e.deltaY !== 0) {
-      e.preventDefault();
-      cardsWallper.scrollLeft += e.deltaY;
-    }
-  },
-  { passive: false }
-);
-
-chipsWallper.addEventListener(
-  "wheel",
-  (e) => {
-    if (e.deltaY !== 0) {
-      e.preventDefault();
-      chipsWallper.scrollLeft += e.deltaY;
-    }
-  },
-  { passive: false }
-);
+  // Handle all chips-wallper elements
+  const chipsWallpers = document.querySelectorAll(".chips-wallper");
+  chipsWallpers.forEach((el) => {
+    el.addEventListener(
+      "wheel",
+      (e) => {
+        if (e.deltaY !== 0) {
+          e.preventDefault();
+          el.scrollLeft += e.deltaY;
+        }
+      },
+      { passive: false }
+    );
+  });
+});
 
 // Select all matching h1 elements
 const headings = document.querySelectorAll("main article a h1");
