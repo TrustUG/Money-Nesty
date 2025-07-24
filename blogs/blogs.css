@@ -49,6 +49,7 @@ main {
   display: flex;
   align-items: start;
   justify-content: space-between;
+  gap: 3rem;
 }
 
 main article {
@@ -57,8 +58,9 @@ main article {
 
 main article .image {
   background-color: var(--sample-image-bg-color);
-  height: 22rem;
-  width: 100%;
+  aspect-ratio: 16 / 7.5;
+  max-width: 48rem;
+  height: auto;
   border-radius: 2.7rem;
   position: relative;
 }
@@ -131,7 +133,7 @@ main article .read-time {
   margin-left: 0.3rem;
   display: flex;
   align-items: center;
-  margin-top: 0.7rem;
+  margin-top: 1rem;
   gap: 0.4rem;
 }
 
@@ -155,7 +157,8 @@ main article .read-time span {
   font-size: 0.8rem;
 }
 
-main article h1 {
+main article .heading-title {
+  max-width: 48rem;
   font-weight: 470;
   margin-left: 0.3rem;
   color: var(--text-color);
@@ -163,28 +166,31 @@ main article h1 {
   hyphens: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  margin-top: 0.6rem;
 }
 
-main article p {
+main article .description {
+  max-width: 48rem;
   margin-left: 0.3rem;
   color: var(--para-color);
-  font-size: 1.02rem;
+  font-size: 0.95rem;
   hyphens: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  line-height: 1.8rem;
+  width: 100%;
+  line-height: 1.85rem;
   font-weight: 360;
   margin-top: 0.5rem;
 }
 
-main article .info {
+main article .info-art {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   margin-top: 1.7rem;
 }
 
-main article .info .image-p {
+main article .info-art .image-p {
   background-color: var(--sample-image-bg-color);
   height: 2.8rem;
   width: 2.8rem;
@@ -192,63 +198,120 @@ main article .info .image-p {
   border: solid 0.2rem var(--sec2-bg-color);
 }
 
-main article .info .image-p img {
+main article .info-art .image-p img {
   width: 100%;
 }
 
-main article .info .dis {
+main article .info-art .dis {
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
-main article .info .dis .name {
+main article .info-art .dis .name {
   font-size: 0.8rem;
   text-transform: capitalize;
 }
 
-main article .info .dis .date {
+main article .info-art .dis .date {
   font-size: 0.7rem;
   color: var(--para-color);
 }
 
-main article .nexts {
-  padding: 1rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 1.5rem;
-  width: 100%;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-  overflow-y: auto;
-}
-
-main article .next-wallper {
+/* next  */
+main article .next {
   margin-top: 2.5rem;
 }
 
-main article .next-wallper h1 {
+main article .next .tite {
+  font-size: 1.9rem;
   text-transform: capitalize;
-  font-size: 1.7rem;
-  margin-left: 1rem;
   font-weight: 500;
+  margin-left: 1.3rem;
 }
 
-main article .next-wallper .nexts .next .next-infor {
-  flex-shrink: 0;
+main article .next .next-wallper {
   display: flex;
   align-items: center;
   justify-content: start;
-  background-color: var(--card-color);
-  cursor: pointer;
-  /* padding: ; */
-  width: 27rem;
-  border-radius: 1.8rem;
-  /* gap: ; */
-  box-shadow: var(--box-shadow);
+  padding: 0;
+  padding: 1rem 0.5rem;
+  /* width: 100%; */
+  gap: 2rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: auto;
+  border-radius: 2rem;
 }
 
-main article .next-wallper .next .image-con {
+main article .next .next-wallper .next-box {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 1.2rem;
+  background-color: var(--card-color);
+  box-shadow: var(--box-shadow);
+  padding: 0.55rem 1rem 0.55rem 0.55rem;
+  border-radius: 2rem;
+  width: 29rem;
+  cursor: pointer;
+}
+
+main article .next .next-wallper .next-box .image-conte {
+  position: relative;
   background-color: var(--sample-image-bg-color);
+  height: 7.8rem;
+  width: 16rem;
+  border-radius: 1.7rem;
+}
+
+main article .next .next-wallper .next-box .image-conte img {
+  width: 100%;
+}
+
+main article .next .next-wallper .next-box .image-conte .next-tag {
+  position: absolute;
+  background-color: var(--sec2-bg-color);
+  font-size: 0.6rem;
+  color: var(--text-color);
+  bottom: 0.8rem;
+  left: 0.8rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 50rem;
+}
+
+main article .next .next-wallper .next-box .discrip h1 {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+main article .next .next-wallper .next-box .discrip p {
+  font-size: 0.7rem;
+  color: var(--para-color);
+  margin-top: 0.3rem;
+}
+
+/* more  */
+main .maore-articles-wallper {
+  width: 100%;
+  box-sizing: border-box;
+  height: (height of main article);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: -1rem;
+  padding: 1rem 0.8rem;
+  border-radius: 1rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  overflow-x: auto;
+}
+
+@media (max-width: 965px) {
+  main .maore-articles-wallper {
+    width: 18rem;
+  }
+
+  #card-link-art {
+  }
 }
