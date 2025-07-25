@@ -261,7 +261,7 @@ main article .next .next-wallper .next-box {
   box-shadow: var(--box-shadow);
   padding: 0.45rem 1rem 0.45rem 0.45rem;
   border-radius: 1.5rem;
-  width: 28rem;
+  max-width: 28rem;
   cursor: pointer;
 }
 
