@@ -36,6 +36,41 @@
   --mark-color: #bd9700;
 }
 
+/* light color  */
+.light-theme {
+  --bg-color: #ffffff;
+  --sec-bg-color: #eceef2;
+  --sample-image-bg-color: #d9d9d9;
+  --sec-hover-color: #f5faff;
+  --card-color: #ffffff;
+  --sec2-bg-color: #e0e4ec;
+  --text-color: #404256;
+  --para-color: #7f8196;
+  --para2-color: #686a79;
+  --placeholder-color: #7c7e98;
+  --icon-color: #646774;
+  --box-shadow: 0 0 3rem #ebebeb;
+  --main-color: #81ef87;
+  --main-color-hover: #5ddd63;
+  --mark-color: #ffcc00;
+}
+
+/* scroll bar  */
+::-webkit-scrollbar {
+  width: 0.5rem;
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sec-bg-color);
+  -webkit-border-radius: 30rem;
+  -webkit-box-shadow: 0rem 0rem 1rem #000000bf;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-color);
+}
+
 body {
   padding-top: 6rem;
 }
@@ -53,13 +88,13 @@ main {
 }
 
 main article {
-  max-width: 48rem;
+  width: 100%;
 }
 
 main article .image {
   background-color: var(--sample-image-bg-color);
   aspect-ratio: 16 / 7.5;
-  max-width: 48rem;
+  width: 100%;
   height: auto;
   border-radius: 2.7rem;
   position: relative;
@@ -289,7 +324,7 @@ main article .next .next-wallper .next-box .image-conte .next-tag {
 }
 
 main article .next .next-wallper .next-box .discrip h1 {
-  font-size: .97rem;
+  font-size: 0.97rem;
   font-weight: 500;
 }
 
@@ -315,11 +350,56 @@ main .maore-articles-wallper {
   overflow-x: auto;
 }
 
-@media (max-width: 965px) {
+@media (max-width: 964px) {
   main .maore-articles-wallper {
-    width: 18rem;
+    display: none;
+  }
+}
+
+@media (max-width: 626px) {
+  html {
+    font-size: 76%;
   }
 
-  #card-link-art {
+  /* blogs links  */
+  main {
+    padding: 0.8rem 0;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .header-cont header .left {
+    max-width: 7.3rem;
+  }
+
+  .header-cont #search-bar-mob {
+    display: flex;
+  }
+
+  .header-cont header .search {
+    display: none;
+  }
+
+  /* top cards  */
+  .cards-wallper {
+    padding: 6rem 0.5rem 0.5rem;
+  }
+}
+
+@media (max-width: 501px) {
+  html {
+    font-size: 74%;
+  }
+
+  .header-cont header .left {
+    max-width: 7.3rem;
+  }
+
+  .header-cont #search-bar-mob {
+    display: none;
+  }
+
+  .header-cont header .search {
+    display: none;
   }
 }
