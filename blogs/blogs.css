@@ -104,7 +104,9 @@ main article .image .blog-actions svg {
 }
 
 main article .image .blog-actions .play-audio {
-  background-color: var(--sec2-bg-color);
+  /* background-color: var(--sec2-bg-color); */
+  background-color: var(--main-color);
+  color: black;
   height: 2.1rem;
   width: 2.1rem;
   border-radius: 50rem;
@@ -115,13 +117,18 @@ main article .image .blog-actions .play-audio {
   margin-left: 0.5rem;
 }
 
+main article .image .blog-actions .play-audio:hover {
+  background-color: var(--main-color-hover);
+}
+
 main article .image .blog-actions .play-audio .pause {
   display: none;
 }
 
 main article .image .blog-actions .play-audio svg {
   width: 1rem;
-  stroke-width: 0.07rem;
+  stroke-width: 0.09rem;
+  stroke: #222222;
 }
 
 main article .image .blog-actions .play-audio .play {
@@ -221,6 +228,7 @@ main article .info-art .dis .date {
 /* next  */
 main article .next {
   margin-top: 2.5rem;
+  max-width: 48rem;
 }
 
 main article .next .tite {
@@ -236,7 +244,7 @@ main article .next .next-wallper {
   justify-content: start;
   padding: 0;
   padding: 1rem 0.5rem;
-  /* width: 100%; */
+  max-width: 48rem;
   gap: 2rem;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
@@ -251,18 +259,18 @@ main article .next .next-wallper .next-box {
   gap: 1.2rem;
   background-color: var(--card-color);
   box-shadow: var(--box-shadow);
-  padding: 0.55rem 1rem 0.55rem 0.55rem;
-  border-radius: 2rem;
-  width: 29rem;
+  padding: 0.45rem 1rem 0.45rem 0.45rem;
+  border-radius: 1.5rem;
+  width: 28rem;
   cursor: pointer;
 }
 
 main article .next .next-wallper .next-box .image-conte {
   position: relative;
   background-color: var(--sample-image-bg-color);
-  height: 7.8rem;
-  width: 16rem;
-  border-radius: 1.7rem;
+  height: 7rem;
+  width: 15.5rem;
+  border-radius: 1.4rem;
 }
 
 main article .next .next-wallper .next-box .image-conte img {
@@ -281,12 +289,12 @@ main article .next .next-wallper .next-box .image-conte .next-tag {
 }
 
 main article .next .next-wallper .next-box .discrip h1 {
-  font-size: 1.05rem;
+  font-size: .97rem;
   font-weight: 500;
 }
 
 main article .next .next-wallper .next-box .discrip p {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--para-color);
   margin-top: 0.3rem;
 }
