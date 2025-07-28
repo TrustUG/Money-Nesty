@@ -233,4 +233,22 @@ $(document).ready(function () {
       }
     });
   });
+
+  // Truncate <h1> to 8 words
+  $("main article a h1").each(function () {
+    const text = $(this).text().trim();
+    const words = text.split(/\s+/); // Split by any whitespace
+    if (words.length > 8) {
+      $(this).text(words.slice(0, 8).join(" ") + "...");
+    }
+  });
+
+  // Truncate <p> to 10 words
+  $("main article a p").each(function () {
+    const text = $(this).text().trim();
+    const words = text.split(/\s+/); // Split by any whitespace
+    if (words.length > 10) {
+      $(this).text(words.slice(0, 10).join(" ") + "...");
+    }
+  });
 });

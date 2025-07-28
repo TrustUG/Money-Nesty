@@ -80,11 +80,11 @@ body {
 }
 
 main {
-  max-width: 1100px;
+  max-width: 1070px;
   display: flex;
   align-items: start;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 main article {
@@ -262,7 +262,7 @@ main article .info-art .dis .date {
 /* next  */
 main article .next {
   margin-top: 2.5rem;
-  max-width: 48rem;
+  max-width: 49rem;
 }
 
 main article .next .tite {
@@ -278,7 +278,7 @@ main article .next .next-wallper {
   justify-content: start;
   padding: 0;
   padding: 1rem 0.5rem;
-  max-width: 48rem;
+  width: 100%;
   gap: 2rem;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
@@ -347,6 +347,10 @@ main .maore-articles-wallper {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   overflow-x: auto;
+}
+
+main .maore-articles-wallper article a {
+  max-width: 17rem;
 }
 
 @media (max-width: 948px) {

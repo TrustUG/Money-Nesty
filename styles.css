@@ -78,7 +78,7 @@ body {
 }
 
 html {
-  font-size: 98%;
+  font-size: 93%;
 }
 
 a {
@@ -86,7 +86,7 @@ a {
 }
 
 .header-cont {
-  height: 6rem;
+  height: 6.3rem;
   background-color: var(--bg-color);
   z-index: 9999;
   position: fixed;
@@ -103,7 +103,7 @@ a {
 }
 
 .header-cont.shrink {
-  height: 7rem;
+  height: 7.5rem;
 }
 
 .header-cont #search-bar-mob {
@@ -545,11 +545,11 @@ mark {
 /* blogs links  */
 main {
   padding: 0 0.5rem;
-  max-width: 1160px;
+  max-width: 1110px;
   margin: 2rem auto 0;
   display: flex;
-  /* justify-content: space-between; */
-  gap: 2.5rem;
+  justify-content: space-between;
+  gap: 2.7rem;
   flex-wrap: nowrap;
 }
 
