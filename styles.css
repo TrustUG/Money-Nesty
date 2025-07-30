@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: poppins;
+  font-family: "poppins";
   border: none;
   outline: none;
   letter-spacing: 0.015rem;
@@ -25,7 +27,7 @@
   --sec-hover-color: #1b1b1b;
   --card-color: #111111;
   --sec2-bg-color: #202020;
-  --text-color: #e0e0e0;
+  --text-color: #d3d3d3;
   --para-color: #a1a1a1;
   --para2-color: #a0a0a0;
   --placeholder-color: #999999;
@@ -44,7 +46,7 @@
   --sec-hover-color: #f5faff;
   --card-color: #ffffff;
   --sec2-bg-color: #e0e4ec;
-  --text-color: #404256;
+  --text-color: #4b4e69;
   --para-color: #7f8196;
   --para2-color: #686a79;
   --placeholder-color: #7c7e98;

@@ -1,0 +1,164 @@
+/* dark color  */
+:root {
+  --bg-color: #000000;
+  --bgtext-color: #141414;
+  --sec-bg-color: #131313;
+  --sample-image-bg-color: #d9d9d913;
+  --sec-hover-color: #1b1b1b;
+  --card-color: #111111;
+  --sec2-bg-color: #202020;
+  --text-color: #d3d3d3;
+  --para-color: #a1a1a1;
+  --para2-color: #a0a0a0;
+  --placeholder-color: #999999;
+  --icon-color: #646774;
+  --box-shadow: 0 0 1rem #00000000;
+  --main-color: #42cc49;
+  --main-color-hover: #15d81f;
+  --mark-color: #bd9700;
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 9rem 2.2rem 2.2rem;
+}
+
+main {
+  max-width: 1050px;
+}
+
+main .left-and-right-wallper {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+main .left-and-right-wallper .left h4 {
+  color: var(--para2-color);
+  text-transform: capitalize;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+main .left-and-right-wallper .left h1 {
+  text-transform: capitalize;
+  margin-top: 0.3rem;
+  font-weight: 500;
+  font-size: 1.9rem;
+}
+
+main .left-and-right-wallper .left p {
+  color: var(--para-color);
+  font-size: 0.9rem;
+  max-width: 30rem;
+  line-height: 1.6rem;
+}
+
+main .left-and-right-wallper .left .icons-wallper {
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-left: 0.3rem;
+}
+
+main .left-and-right-wallper .left .icons-wallper .box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+main .left-and-right-wallper .left .icons-wallper .box .icon {
+  background-color: var(--main-color);
+  height: 3.4rem;
+  width: 3.4rem;
+  border-radius: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .left-and-right-wallper .left .icons-wallper .box .icon:hover {
+  background-color: var(--main-color-hover);
+}
+
+main .left-and-right-wallper .left .icons-wallper .box .icon svg {
+  stroke: #424242;
+  stroke-width: 0.07rem;
+  width: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main .left-and-right-wallper .left .icons-wallper .box .information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+main .left-and-right-wallper .left .icons-wallper .box .information h3 {
+  text-transform: capitalize;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1rem;
+}
+
+main .left-and-right-wallper .left .icons-wallper .box .information h5 {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1rem;
+  color: var(--para-color);
+}
+
+main .left-and-right-wallper .left .bar {
+  height: 0.07rem;
+  width: 100%;
+  background-color: var(--main-color);
+  margin-top: 4rem;
+  border-radius: 50rem;
+}
+
+main .left-and-right-wallper .left .bottom {
+  margin-top: 1.3rem;
+}
+
+main .left-and-right-wallper .left .bottom h2 {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+main .left-and-right-wallper .left .bottom .ico-wallper {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+}
+
+main .left-and-right-wallper .left .bottom .ico-wallper .con {
+  height: 2.3rem;
+  width: 2.3rem;
+  background-color: var(--main-color);
+  border-radius: 50rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+main .left-and-right-wallper .left .bottom .ico-wallper .con:hover {
+  background-color: var(--main-color-hover);
+}
+
+main .left-and-right-wallper .left .bottom .ico-wallper .con svg {
+  stroke: #424242;
+  stroke-width: 0.07rem;
+  width: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

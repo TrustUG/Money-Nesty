@@ -1,0 +1,125 @@
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-ULt.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-ULt.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-CnULtOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-CnULtOb.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-Th.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-Th.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-ThOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-ThOb.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-Lt.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-Lt.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-LtOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-LtOb.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-Rg.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-Rg.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-RgOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-RgOb.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-Md.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-Md.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-MdOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-MdOb.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-Bd.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-Bd.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-BdOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-BdOb.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-UBd.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-UBd.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("../fonts/GTWalsheimTrial-UBdOb.woff2") format("woff2"),
+    url("../fonts/GTWalsheimTrial-UBdOb.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
