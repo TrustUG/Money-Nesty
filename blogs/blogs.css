@@ -476,6 +476,10 @@ main .maore-articles-wallper article a {
 }
 
 @media (max-width: 454px) {
+  main article .image {
+    height: 20em;
+  }
+
   html {
     font-size: 80%;
   }
@@ -554,5 +558,17 @@ main .maore-articles-wallper article a {
   .header-cont header .right a {
     padding: 0.3rem 1rem;
     font-size: 0.72rem;
+  }
+
+  main article .heading-title {
+    font-size: 2.35rem;
+    line-height: 3rem;
+    margin-top: 1rem;
+  }
+
+  main article .description {
+    font-size: 1.18rem;
+    line-height: 2.3rem;
+    margin-top: 1.2rem;
   }
 }

@@ -46,6 +46,30 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+@media (max-width: 769px) {
+  main {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1119px) {
+  /* blogs links  */
+  main {
+    gap: 2rem;
+    /* display: grid; */
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1070px) {
+  /* blogs links  */
+  main {
+    gap: 1.5rem;
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr 1fr; */
+  }
 
   main article a h1,
   main article a p {
@@ -187,7 +211,7 @@
 @media (max-width: 454px) {
   /* blogs links  */
   main {
-    padding: 0.8rem 0.5rem;
+    padding: 0.8rem 1.11rem;
     gap: 2.5rem;
     grid-template-columns: 1fr;
     align-items: center;
@@ -226,7 +250,7 @@
   main article a h1 {
     margin-left: 0.5rem;
     color: var(--text-color);
-    font-size: 1.3rem;
+    font-size: 1.15rem;
     font-weight: 550;
     line-height: 1.95rem;
     margin-top: 0.5rem;
@@ -234,7 +258,7 @@
 
   main article a p {
     margin-left: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-top: 0.5rem;
     font-weight: 300;
     color: var(--para-color);

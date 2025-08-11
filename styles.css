@@ -26,7 +26,7 @@
   --sec-bg-color: #131313;
   --sample-image-bg-color: #d9d9d913;
   --sec-hover-color: #1b1b1b;
-  --card-color: #111111;
+  --card-color: #0a0a0a;
   --sec2-bg-color: #202020;
   --text-color: #d3d3d3;
   --para-color: #a1a1a1;
@@ -50,9 +50,9 @@
   --text-color: #4b4e69;
   --para-color: #7f8196;
   --para2-color: #686a79;
-  --placeholder-color: #7c7e98;
+  --placeholder-color: #acaec9;
   --icon-color: #646774;
-  --box-shadow: 0 0 3rem #ebebeb;
+  --box-shadow: 0 0 3rem #f0f0f0;
   --main-color: #81ef87;
   --main-color-hover: #5ddd63;
   --mark-color: #ffcc00;
