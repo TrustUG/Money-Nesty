@@ -1,151 +1,153 @@
 $(document).ready(function () {
+  // ===== BLOG COUNT =====
   var count = $("main article a").length;
   $(".filter h2 span").text(count);
 
+  // ===== THEME TOGGLE =====
   function updateThemeUI() {
     const isLight = $("body").hasClass("light-theme");
-
-    if (isLight) {
-      $("#sun").hide();
-      $("#moon").show();
-      $(".light-logo").show();
-      $(".dark-logo").hide();
-    } else {
-      $("#moon").hide();
-      $("#sun").show();
-      $(".light-logo").hide();
-      $(".dark-logo").show();
-    }
+    $("#sun").toggle(!isLight);
+    $("#moon").toggle(isLight);
+    $(".light-logo").toggle(isLight);
+    $(".dark-logo").toggle(!isLight);
   }
 
-  // Load saved theme
   const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "light") {
-    $("body").addClass("light-theme");
-  } else {
-    $("body").removeClass("light-theme");
-  }
-
+  $("body").toggleClass("light-theme", savedTheme === "light");
   updateThemeUI();
 
-  // On click toggle
   $("#theme").on("click", function () {
     $("body").toggleClass("light-theme");
-
     const isNowLight = $("body").hasClass("light-theme");
     localStorage.setItem("theme", isNowLight ? "light" : "dark");
-
     updateThemeUI();
   });
 
-  // hide search desk & mobile
-  const $inputDesk = $("#searchInput");
-  const $placeholderDesk = $(".header-cont header .search .placeholder-text");
-  const $iconDesk = $(".header-cont header .search .icon svg");
-
-  const $inputMob = $("#searchInputMob");
-  const $placeholderMob = $("#search-bar-mob .placeholder-text");
-  const $iconMob = $("#search-bar-mob .icon svg");
-
+  // ===== SEARCH INPUT =====
   function toggleSearchExtras($input, $placeholder, $icon) {
     if ($input.is(":focus") || $input.val().length > 0) {
-      $placeholder.stop(true, true).fadeOut(200);
-      $icon.stop(true, true).fadeOut(200);
+      $placeholder.fadeOut(200);
+      $icon.fadeOut(200);
     } else {
-      $placeholder.stop(true, true).fadeIn(200);
-      $icon.stop(true, true).fadeIn(200);
+      $placeholder.fadeIn(200);
+      $icon.fadeIn(200);
     }
   }
 
-  // Initial check for both inputs
-  toggleSearchExtras($inputDesk, $placeholderDesk, $iconDesk);
-  toggleSearchExtras($inputMob, $placeholderMob, $iconMob);
+  const $inputDesk = $("#searchInput"),
+    $placeholderDesk = $(".header-cont header .search .placeholder-text"),
+    $iconDesk = $(".header-cont header .search .icon svg"),
+    $inputMob = $("#searchInputMob"),
+    $placeholderMob = $("#search-bar-mob .placeholder-text"),
+    $iconMob = $("#search-bar-mob .icon svg");
 
-  // Toggle extras on focus/input/blur for desktop
-  $inputDesk.on("focus input blur", function () {
-    toggleSearchExtras($inputDesk, $placeholderDesk, $iconDesk);
+  [$inputDesk, $inputMob].forEach(($input, i) => {
+    const $placeholder = i === 0 ? $placeholderDesk : $placeholderMob;
+    const $icon = i === 0 ? $iconDesk : $iconMob;
+
+    toggleSearchExtras($input, $placeholder, $icon);
+
+    $input.on("focus input blur", () =>
+      toggleSearchExtras($input, $placeholder, $icon)
+    );
+    $input.on("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        $input.val("").blur();
+        toggleSearchExtras($input, $placeholder, $icon);
+      }
+    });
   });
 
-  // Toggle extras on focus/input/blur for mobile
-  $inputMob.on("focus input blur", function () {
-    toggleSearchExtras($inputMob, $placeholderMob, $iconMob);
-  });
-
-  // Clear input and blur on Enter for desktop
-  $inputDesk.on("keydown", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault(); // stop form from submitting
-      $inputDesk.val(""); // clear input
-      $inputDesk.blur(); // remove focus
-      toggleSearchExtras($inputDesk, $placeholderDesk, $iconDesk);
-    }
-  });
-
-  // Clear input and blur on Enter for mobile
-  $inputMob.on("keydown", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault(); // stop form from submitting
-      $inputMob.val(""); // clear input
-      $inputMob.blur(); // remove focus
-      toggleSearchExtras($inputMob, $placeholderMob, $iconMob);
-    }
-  });
-
-  // scroll search
+  // ===== SCROLL BEHAVIOR =====
   let lastScrollTop = 0;
-
   $(window).on("scroll", function () {
-    // Only run on screens <= 462px
     if (window.matchMedia("(max-width: 626px)").matches) {
       const st = $(this).scrollTop();
-      const $header = $(".header-cont");
-      const $searchBar = $(".header-cont #search-bar-mob");
-
+      const $header = $(".header-cont"),
+        $searchBar = $(".header-cont #search-bar-mob");
       if (st > lastScrollTop) {
-        // Scrolling down
         $searchBar.fadeOut(200);
         $header.css("height", "6.3rem");
       } else {
-        // Scrolling up
         $searchBar.fadeIn(200);
         $header.css("height", "10.5rem");
       }
-
       lastScrollTop = st;
     }
   });
 
-  // prevent click on blog-card action icons
+  // ===== BLOG CARD ICONS =====
   $(".blog-card .actions svg").on("click", function (e) {
-    e.preventDefault(); // Stops link jump
-    e.stopPropagation(); // Stops bubbling to <a>
-
-    // Do something (like toggle)
+    e.preventDefault();
+    e.stopPropagation();
     $(this).toggleClass("active");
   });
-});
 
-// chips
-$(document).ready(function () {
-  // Step 1: Automatically add data-filter from .text inside .chip
+  // ===== FAVORITES & LIKES =====
+  $(".blog-card").each(function (index) {
+    const $card = $(this),
+      $favPath = $card.find(".favorites-icon path"),
+      $likePath = $card.find(".like-icon path"),
+      favKey = "favorite-" + index,
+      likeKey = "like-" + index;
+
+    $favPath.css({
+      fill: localStorage.getItem(favKey) === "true" ? "#ffcc23" : "none",
+      strokeWidth: localStorage.getItem(favKey) === "true" ? 0 : "0.04rem",
+    });
+    $likePath.css({
+      fill: localStorage.getItem(likeKey) === "true" ? "#df1c1cff" : "none",
+      strokeWidth: localStorage.getItem(likeKey) === "true" ? 0 : "0.04rem",
+    });
+
+    $card.find(".favorites-icon").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const isActive =
+        $favPath.css("fill") !== "none" && $favPath.css("fill") !== "";
+      $favPath.css({
+        fill: isActive ? "none" : "#ffcc23",
+        strokeWidth: isActive ? "0.04rem" : 0,
+      });
+      localStorage.setItem(favKey, !isActive);
+    });
+
+    $card.find(".like-icon").on("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const isActive =
+        $likePath.css("fill") !== "none" && $likePath.css("fill") !== "";
+      $likePath.css({
+        fill: isActive ? "none" : "#b80000ff",
+        strokeWidth: isActive ? "0.04rem" : 0,
+      });
+      localStorage.setItem(likeKey, !isActive);
+    });
+  });
+
+  // ===== CHIPS FILTER =====
   $(".chip").each(function () {
     const label = $(this).find(".text").text().toLowerCase().trim();
     $(this).attr("data-filter", label);
   });
 
-  // Step 2: Handle chip clicks for filtering
-  $(".chip").click(function () {
+  $(".chip").on("click", function () {
     const selected = $(this).data("filter");
-
-    // Add active class to clicked chip
     $(".chip").removeClass("active");
     $(this).addClass("active");
 
-    // Show/hide blog cards
-    $(".blog-card").each(function () {
-      const tag = $(this).find(".tag").text().toLowerCase().trim();
+    $(".blog-card").each(function (index) {
+      const tag = $(this).find(".tag").text().toLowerCase().trim(),
+        isLiked = localStorage.getItem("like-" + index) === "true",
+        isFavorite = localStorage.getItem("favorite-" + index) === "true";
 
-      if (selected === "all" || tag === selected) {
+      if (
+        selected === "all" ||
+        (selected === "liked" && isLiked) ||
+        (selected === "favorites" && isFavorite) ||
+        tag === selected
+      ) {
         $(this).show();
       } else {
         $(this).hide();
@@ -153,105 +155,37 @@ $(document).ready(function () {
     });
   });
 
-  // For each blog card, setup favorite and like toggle with localStorage
-  $(".blog-card").each(function (index) {
-    const $card = $(this);
-
-    // Cache the SVG paths inside favorites and like icons
-    const $favPath = $card.find(".favorites-icon path");
-    const $likePath = $card.find(".like-icon path");
-
-    // Create localStorage keys unique per card
-    const favKey = "favorite-" + index;
-    const likeKey = "like-" + index;
-
-    // Load saved state and apply styles
-    if (localStorage.getItem(favKey) === "true") {
-      $favPath.css({ fill: "#ffcc23", strokeWidth: 0 });
-    } else {
-      $favPath.css({ fill: "none", strokeWidth: "0.04rem" });
-    }
-
-    if (localStorage.getItem(likeKey) === "true") {
-      $likePath.css({ fill: "#df1c1cff", strokeWidth: 0 });
-    } else {
-      $likePath.css({ fill: "none", strokeWidth: "0.04rem" });
-    }
-
-    // Favorite click handler
-    $card.find(".favorites-icon").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const isActive =
-        $favPath.css("fill") !== "none" && $favPath.css("fill") !== "";
-
-      if (isActive) {
-        // Toggle off
-        $favPath.css({ fill: "none", strokeWidth: "0.04rem" });
-        localStorage.setItem(favKey, "false");
-      } else {
-        // Toggle on
-        $favPath.css({ fill: "#ffcc23", strokeWidth: 0 });
-        localStorage.setItem(favKey, "true");
-      }
-    });
-
-    // Like click handler
-    $card.find(".like-icon").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const isActive =
-        $likePath.css("fill") !== "none" && $likePath.css("fill") !== "";
-
-      if (isActive) {
-        // Toggle off
-        $likePath.css({ fill: "none", strokeWidth: "0.04rem" });
-        localStorage.setItem(likeKey, "false");
-      } else {
-        // Toggle on
-        $likePath.css({ fill: "#b80000ff", strokeWidth: 0 });
-        localStorage.setItem(likeKey, "true");
-      }
-    });
-  });
-
-  // Handle chip clicks for filtering blog cards
-  $(".chip").click(function () {
-    const selectedFilter = $(this).data("filter");
-
-    // Add 'active' class to clicked chip, remove from others
-    $(".chip").removeClass("active");
-    $(this).addClass("active");
-
-    // Show/hide blog cards based on tag match
-    $(".blog-card").each(function () {
-      const tag = $(this).find(".tag").text().toLowerCase().trim();
-
-      if (selectedFilter === "all" || tag === selectedFilter) {
-        $(this).show();
-      } else {
-        $(this).hide();
-      }
-    });
-  });
-
-  // Truncate <h1> to 8 words
+  // ===== TEXT TRUNCATE =====
   $("main article a h1").each(function () {
-    const text = $(this).text().trim();
-    const words = text.split(/\s+/); // Split by any whitespace
-    if (words.length > 8) {
-      $(this).text(words.slice(0, 8).join(" ") + "...");
-    }
+    const words = $(this).text().trim().split(/\s+/);
+    if (words.length > 8) $(this).text(words.slice(0, 8).join(" ") + "...");
   });
 
-  // Truncate <p> to 10 words
   $("main article a p").each(function () {
-    const text = $(this).text().trim();
-    const words = text.split(/\s+/); // Split by any whitespace
-    if (words.length > 10) {
-      $(this).text(words.slice(0, 10).join(" ") + "...");
-    }
+    const words = $(this).text().trim().split(/\s+/);
+    if (words.length > 10) $(this).text(words.slice(0, 10).join(" ") + "...");
+  });
+
+  // ===== POPUP =====
+  function showPopup() {
+    $(".overlay").fadeIn(200);
+    $(".popup").css("display", "flex").hide().fadeIn(200);
+  }
+
+  function closePopup() {
+    $(".overlay").fadeOut(200);
+    $(".popup").fadeOut(200, function () {
+      $(this).css("display", "none");
+    });
+  }
+
+  // Only the filter button launches the popup
+  $(".filter .btn").on("click", function (e) {
+    e.preventDefault();
+    showPopup();
+  });
+
+  $("#close-popup").on("click", function () {
+    closePopup();
   });
 });

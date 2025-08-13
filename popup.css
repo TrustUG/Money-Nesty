@@ -1,0 +1,103 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "poppins";
+  border: none;
+  outline: none;
+  letter-spacing: 0.015rem;
+  list-style: none;
+  scroll-behavior: smooth;
+  transition: 0.4s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  -moz-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  outline: none;
+}
+
+/* dark color  */
+:root {
+  --bg-color: #000000;
+  --bgtext-color: #141414;
+  --sec-bg-color: #131313;
+  --sample-image-bg-color: #d9d9d913;
+  --sec-hover-color: #1b1b1b;
+  --card-color: #0a0a0a;
+  --sec2-bg-color: #202020;
+  --text-color: #d3d3d3;
+  --para-color: #a1a1a1;
+  --para2-color: #a0a0a0;
+  --placeholder-color: #999999;
+  --icon-color: #646774;
+  --box-shadow: 0 0 1rem #00000000;
+  --main-color: #42cc49;
+  --main-color-hover: #15d81f;
+  --mark-color: #bd9700;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  z-index: 99999;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--sec-bg-color);
+  padding: 3rem 1.5rem 4rem;
+  border-radius: 2.5rem;
+  max-width: 19.5rem;
+  box-shadow: var(--box-shadow);
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.popup .icon svg {
+}
+
+.popup h2 {
+  color: var(--text-color);
+  margin-top: 1.7rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.popup p {
+  color: var(--para-color);
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 200;
+  max-width: 17rem;
+}
+
+.popup button {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  justify-content: center;
+  background-color: var(--main-color);
+  padding: 1.6rem 3rem;
+  border-radius: 50rem;
+  color: var(--bgtext-color);
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  margin-top: 1.8rem;
+  cursor: pointer;
+}
+
+.popup button:hover {
+  background: var(--main-color-hover);
+}
