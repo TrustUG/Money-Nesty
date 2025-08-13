@@ -395,7 +395,7 @@ main .bottom-cont .cards-wallper {
   }
 
   .header-cont header .left {
-    max-width: 7rem;
+    max-width: 7.55rem;
   }
 
   .header-cont header .right {
@@ -403,7 +403,7 @@ main .bottom-cont .cards-wallper {
   }
 
   .header-cont header .right a {
-    padding: 0.3rem 1rem;
-    font-size: 0.72rem;
+    padding: 0.57rem 1rem;
+    font-size: 0.83rem;
   }
 }

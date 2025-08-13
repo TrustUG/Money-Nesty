@@ -115,10 +115,10 @@
     width: 17rem;
   }
 
-  .header-cont header .right a {
+  /* .header-cont header .right a {
     padding: 0.5rem 1.2rem;
     font-size: 0.74rem;
-  }
+  } */
 }
 
 @media (max-width: 626px) {
@@ -310,7 +310,7 @@
   }
 
   .header-cont header .right a {
-    padding: 0.5rem 1rem;
-    font-size: 0.72rem;
+    padding: 0.64rem 1rem;
+    font-size: 0.7rem;
   }
 }
