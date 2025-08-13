@@ -45,39 +45,42 @@ $(document).ready(function () {
 
         $article.show();
       });
-      return;
+    } else {
+      const searchWords = searchValue.split(/\s+/);
+
+      $("main article").each(function () {
+        const $article = $(this);
+        const $a = $article.find("a");
+        const $h1 = $a.find("h1");
+        const $p = $a.find("p");
+
+        // Cache original HTML once
+        if (!$h1.data("original")) $h1.data("original", $h1.html());
+        if (!$p.data("original")) $p.data("original", $p.html());
+
+        // Combine text content for searching (convert to lowercase)
+        const combinedText = ($h1.text() + " " + $p.text()).toLowerCase();
+
+        // Check if ALL words are found in combined text
+        const allWordsFound = searchWords.every((word) =>
+          combinedText.includes(word)
+        );
+
+        if (allWordsFound) {
+          $article.show();
+
+          // Highlight each word in both h1 and p separately
+          $h1.html(highlightMultipleWords($h1.data("original"), searchWords));
+          $p.html(highlightMultipleWords($p.data("original"), searchWords));
+        } else {
+          $article.hide();
+        }
+      });
     }
 
-    const searchWords = searchValue.split(/\s+/);
-
-    $("main article").each(function () {
-      const $article = $(this);
-      const $a = $article.find("a");
-      const $h1 = $a.find("h1");
-      const $p = $a.find("p");
-
-      // Cache original HTML once
-      if (!$h1.data("original")) $h1.data("original", $h1.html());
-      if (!$p.data("original")) $p.data("original", $p.html());
-
-      // Combine text content for searching (convert to lowercase)
-      const combinedText = ($h1.text() + " " + $p.text()).toLowerCase();
-
-      // Check if ALL words are found in combined text
-      const allWordsFound = searchWords.every((word) =>
-        combinedText.includes(word)
-      );
-
-      if (allWordsFound) {
-        $article.show();
-
-        // Highlight each word in both h1 and p separately
-        $h1.html(highlightMultipleWords($h1.data("original"), searchWords));
-        $p.html(highlightMultipleWords($p.data("original"), searchWords));
-      } else {
-        $article.hide();
-      }
-    });
+    // Update count of visible links inside visible articles
+    var visibleCount = $("main article:visible a").length;
+    $(".filter h2 span").text(visibleCount);
   }
 
   // Debounced filter handler
@@ -92,6 +95,6 @@ $(document).ready(function () {
   // Attach input event on both desktop and mobile search bars
   $("#searchInput, #searchInputMob").on("input", debouncedFilter);
 
-  // Initial call to show all articles on page load
+  // Initial call to show all articles on page load and update count
   filterArticles("");
 });

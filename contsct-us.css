@@ -24,6 +24,20 @@ body {
   padding: 9rem 2.2rem 2.2rem;
 }
 
+.header-cont header .right a {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  justify-content: center;
+  background-color: var(--main-color);
+  padding: 0.6rem 1.2rem;
+  gap: 0.5rem;
+  border-radius: 50rem;
+  color: var(--bgtext-color);
+  font-size: 0.74rem;
+  text-transform: capitalize;
+}
+
 main {
   max-width: 1050px;
   display: flex;

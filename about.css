@@ -43,8 +43,17 @@ body {
 }
 
 .header-cont header .right a {
-  padding: 0.6rem 1.7rem;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  justify-content: center;
+  background-color: var(--main-color);
+  padding: 0.6rem 1.2rem;
   gap: 0.5rem;
+  border-radius: 50rem;
+  color: var(--bgtext-color);
+  font-size: 0.74rem;
+  text-transform: capitalize;
 }
 
 main {
@@ -102,13 +111,13 @@ main .cont-btn {
   line-height: 0;
   justify-content: center;
   background-color: var(--main-color);
-  padding: 0.6rem 1.4rem;
+  padding: 0.6rem 1rem;
   gap: 0.3rem;
   border-radius: 50rem;
   color: var(--bgtext-color);
   font-size: 0.74rem;
   text-transform: capitalize;
-  max-width: 9rem;
+  max-width: 8.8rem;
   margin-top: 1.8rem;
 }
 

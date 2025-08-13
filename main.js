@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  var count = $("main article a").length;
+  $(".filter h2 span").text(count);
+
   function updateThemeUI() {
     const isLight = $("body").hasClass("light-theme");
 
