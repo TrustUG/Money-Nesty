@@ -662,11 +662,22 @@ main article .publisher .info {
 }
 
 main article .publisher .info .image {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--sample-image-bg-color);
   height: 2.1rem;
   width: 2.1rem;
   border-radius: 50rem;
   border: solid 0.15rem var(--sec2-bg-color);
+}
+
+main article .publisher .info .image img {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main article .publisher .info .dis {

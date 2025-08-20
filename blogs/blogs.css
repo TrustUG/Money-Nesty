@@ -141,9 +141,9 @@ main article .image .blog-actions .play-audio {
   /* background-color: var(--sec2-bg-color); */
   background-color: var(--main-color);
   color: black;
-  height: 2.35rem;
+  height: 2.2rem;
   line-height: 0;
-  width: 2.35rem;
+  width: 2.2rem;
   border-radius: 50rem;
   display: flex;
   align-items: center;
@@ -161,9 +161,10 @@ main article .image .blog-actions .play-audio .pause {
 }
 
 main article .image .blog-actions .play-audio svg {
-  width: 1.3rem;
+  width: 1.1rem;
   stroke-width: 0.06rem;
   stroke: #222222;
+  margin-left: -0.15rem;
 }
 
 main article .image .blog-actions .play-audio .play {
@@ -221,7 +222,7 @@ main article .description {
   overflow-wrap: break-word;
   width: 100%;
   line-height: 1.85rem;
-  font-weight: 360;
+  font-weight: 350;
   margin-top: 0.5rem;
 }
 
