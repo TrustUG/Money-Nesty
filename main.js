@@ -84,46 +84,65 @@ $(document).ready(function () {
     $(this).toggleClass("active");
   });
 
-  // ===== FAVORITES & LIKES =====
-  $(".blog-card").each(function (index) {
-    const $card = $(this),
-      $favPath = $card.find(".favorites-icon path"),
-      $likePath = $card.find(".like-icon path"),
-      favKey = "favorite-" + index,
-      likeKey = "like-" + index;
+  // ===== LIKES & FAVORITES SYNC FUNCTION =====
+  function initLikesAndFavorites(containerSelector) {
+    $(containerSelector)
+      .find(".blog-card")
+      .each(function (index) {
+        const $card = $(this),
+          $favPath = $card.find(".favorites-icon path"),
+          $likePath = $card.find(".like-icon path"),
+          favKey = "favorite-" + index,
+          likeKey = "like-" + index;
 
-    $favPath.css({
-      fill: localStorage.getItem(favKey) === "true" ? "#ffcc23" : "none",
-      strokeWidth: localStorage.getItem(favKey) === "true" ? 0 : "0.04rem",
-    });
-    $likePath.css({
-      fill: localStorage.getItem(likeKey) === "true" ? "#df1c1cff" : "none",
-      strokeWidth: localStorage.getItem(likeKey) === "true" ? 0 : "0.04rem",
-    });
+        // Restore saved state
+        $favPath.css({
+          fill: localStorage.getItem(favKey) === "true" ? "#ffcc23" : "none",
+          strokeWidth: localStorage.getItem(favKey) === "true" ? 0 : "0.04rem",
+        });
+        $likePath.css({
+          fill: localStorage.getItem(likeKey) === "true" ? "#b80000ff" : "none",
+          strokeWidth: localStorage.getItem(likeKey) === "true" ? 0 : "0.04rem",
+        });
 
-    $card.find(".favorites-icon").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const isActive =
-        $favPath.css("fill") !== "none" && $favPath.css("fill") !== "";
-      $favPath.css({
-        fill: isActive ? "none" : "#ffcc23",
-        strokeWidth: isActive ? "0.04rem" : 0,
+        // Favorites click
+        $card
+          .find(".favorites-icon")
+          .off("click")
+          .on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const isActive = $favPath.css("fill") !== "none";
+            $favPath.css({
+              fill: isActive ? "none" : "#ffcc23",
+              strokeWidth: isActive ? "0.04rem" : 0,
+            });
+            localStorage.setItem(favKey, !isActive);
+          });
+
+        // Likes click
+        $card
+          .find(".like-icon")
+          .off("click")
+          .on("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const isActive = $likePath.css("fill") !== "none";
+            $likePath.css({
+              fill: isActive ? "none" : "#b80000ff",
+              strokeWidth: isActive ? "0.04rem" : 0,
+            });
+            localStorage.setItem(likeKey, !isActive);
+          });
       });
-      localStorage.setItem(favKey, !isActive);
-    });
+  }
 
-    $card.find(".like-icon").on("click", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      const isActive =
-        $likePath.css("fill") !== "none" && $likePath.css("fill") !== "";
-      $likePath.css({
-        fill: isActive ? "none" : "#b80000ff",
-        strokeWidth: isActive ? "0.04rem" : 0,
-      });
-      localStorage.setItem(likeKey, !isActive);
-    });
+  // Initialize likes/favorites on main page
+  initLikesAndFavorites("main");
+
+  // Initialize likes/favorites on dynamically loaded blog content
+  $(".maore-articles-wallper").load("../index.html main > *", function () {
+    initLikesAndFavorites(".maore-articles-wallper");
   });
 
   // ===== CHIPS FILTER =====
@@ -179,7 +198,6 @@ $(document).ready(function () {
     });
   }
 
-  // Only the filter button launches the popup
   $(".filter .btn").on("click", function (e) {
     e.preventDefault();
     showPopup();

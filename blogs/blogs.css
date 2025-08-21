@@ -355,6 +355,14 @@ main .maore-articles-wallper article a {
   max-width: 17rem;
 }
 
+main .maore-articles-wallper > :first-child {
+  display: none;
+}
+
+main .maore-articles-wallper article .publisher .actions svg {
+  display: none;
+}
+
 @media (max-width: 948px) {
   main .maore-articles-wallper {
     display: none;

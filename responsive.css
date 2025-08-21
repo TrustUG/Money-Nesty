@@ -211,11 +211,12 @@
 @media (max-width: 454px) {
   /* blogs links  */
   main {
-    padding: 0.8rem 1.6rem;
+    padding: 0.8rem 0rem;
     gap: 2.5rem;
     grid-template-columns: 1fr;
     align-items: center;
     justify-content: center;
+    max-width: 24rem;
   }
 
   main article a h1,

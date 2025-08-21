@@ -1,4 +1,26 @@
 $(document).ready(function () {
+  $(".maore-articles-wallper").load("../index.html main > *", function () {
+    // This runs AFTER the content is loaded
+
+    // Truncate h1
+    $(".maore-articles-wallper h1").each(function () {
+      const words = $(this).text().trim().split(/\s+/);
+      if (words.length > 8) $(this).text(words.slice(0, 8).join(" ") + "...");
+    });
+
+    // Truncate p
+    $(".maore-articles-wallper p").each(function () {
+      const words = $(this).text().trim().split(/\s+/);
+      if (words.length > 10) $(this).text(words.slice(0, 10).join(" ") + "...");
+    });
+
+    // Next articles
+    $(".maore-articles-wallper .next .next-box .discrip h1").each(function () {
+      const words = $(this).text().trim().split(/\s+/);
+      if (words.length > 8) $(this).text(words.slice(0, 8).join(" ") + "...");
+    });
+  });
+
   const pageKey = window.location.pathname.replace(/\W/g, "_");
 
   // Clear saved audio time on page load so audio always starts fresh
