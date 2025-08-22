@@ -29,7 +29,7 @@
   --card-color: #0a0a0a;
   --sec2-bg-color: #202020;
   --text-color: #d3d3d3;
-  --para-color: #a1a1a1;
+  --para-color: #868686;
   --para2-color: #a0a0a0;
   --placeholder-color: #999999;
   --icon-color: #646774;
@@ -579,13 +579,15 @@ main article a .image-cont {
   background-color: var(--sample-image-bg-color);
   height: 9.2rem;
   width: 100%;
-  border-radius: 1.7rem;
+  border-radius: 1.3rem;
   overflow: hidden;
   position: relative;
 }
 
 main article a .image-cont img {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 main article a .image-cont .tag {
@@ -597,6 +599,7 @@ main article a .image-cont .tag {
   left: 1rem;
   padding: 0.2rem 0.7rem;
   border-radius: 50rem;
+  text-transform: capitalize;
 }
 
 main article a .read-time {
