@@ -567,7 +567,7 @@ main article a {
   background-color: var(--card-color);
   box-shadow: var(--box-shadow);
   padding: 0.6rem 0.6rem 1.3rem;
-  border-radius: 1.95rem;
+  border-radius: 1.7rem;
   width: auto;
 }
 
@@ -579,7 +579,7 @@ main article a .image-cont {
   background-color: var(--sample-image-bg-color);
   height: 9.2rem;
   width: 100%;
-  border-radius: 1.3rem;
+  border-radius: 1.1rem;
   overflow: hidden;
   position: relative;
 }
