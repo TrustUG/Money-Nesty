@@ -318,10 +318,13 @@ main article .next .next-wallper .next-box .image-conte {
   height: 7rem;
   width: 15.5rem;
   border-radius: 1.4rem;
+  overflow: hidden;
 }
 
 main article .next .next-wallper .next-box .image-conte img {
   width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 main article .next .next-wallper .next-box .image-conte .next-tag {
