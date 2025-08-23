@@ -95,7 +95,7 @@ main article .image {
   background-color: var(--sample-image-bg-color);
   width: 100%;
   height: 22rem;
-  border-radius: 2.7rem;
+  border-radius: 2.2rem;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -104,8 +104,10 @@ main article .image {
 }
 
 main article .image img {
+  height: 100%;
   width: 100%;
   cursor: pointer;
+  object-fit: cover;
 }
 
 main article .image .blog-actions {
@@ -114,7 +116,7 @@ main article .image .blog-actions {
   left: 0;
   width: 100%;
   background-color: var(--sec-bg-color);
-  border-radius: 0 0 2.7rem 2.7rem;
+  border-radius: 0 0 2.2rem 2.2rem;
   display: flex;
   align-items: center;
   padding: 1.3rem 2rem 1.5rem;
