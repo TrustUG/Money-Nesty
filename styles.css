@@ -60,7 +60,7 @@
 
 /* scroll bar  */
 ::-webkit-scrollbar {
-  width: 0.5rem;
+  width: 0.15rem;
   background: var(--bg-color);
 }
 
