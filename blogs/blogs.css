@@ -175,7 +175,7 @@ main article .image .blog-actions .play-audio svg {
   width: 1.1rem;
   stroke-width: 0.06rem;
   stroke: #222222;
-  margin-left: -0.15rem;
+  /* margin-left: -0.15rem; */
 }
 
 main article .image .blog-actions .play-audio .play {
