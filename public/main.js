@@ -1,7 +1,12 @@
 $(document).ready(function () {
-  // ===== BLOG COUNT =====
-  var count = $("main article a").length;
-  $(".filter h2 span").text(count);
+  // ===== FUNCTION: UPDATE BLOG COUNT =====
+  function updateBlogCount() {
+    const visibleCount = $(".blog-card:visible").length;
+    $(".filter h2 span").text(visibleCount);
+  }
+
+  // ===== INITIAL BLOG COUNT =====
+  updateBlogCount();
 
   // ===== THEME TOGGLE =====
   function updateThemeUI() {
@@ -50,11 +55,33 @@ $(document).ready(function () {
     $input.on("focus input blur", () =>
       toggleSearchExtras($input, $placeholder, $icon)
     );
+
+    // Search on Enter key
     $input.on("keydown", function (e) {
       if (e.key === "Enter") {
         e.preventDefault();
+        const searchTerm = $input.val().toLowerCase().trim();
+
+        $(".blog-card").each(function () {
+          const tag = $(this).find(".tag").text().toLowerCase().trim(),
+            title = $(this).find("h1").text().toLowerCase().trim(),
+            content = $(this).find("p").text().toLowerCase().trim();
+
+          if (
+            searchTerm === "" ||
+            title.includes(searchTerm) ||
+            content.includes(searchTerm) ||
+            tag.includes(searchTerm)
+          ) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+
         $input.val("").blur();
         toggleSearchExtras($input, $placeholder, $icon);
+        updateBlogCount(); // update count after search
       }
     });
   });
@@ -88,12 +115,21 @@ $(document).ready(function () {
   function initLikesAndFavorites(containerSelector) {
     $(containerSelector)
       .find(".blog-card")
-      .each(function (index) {
+      .each(function () {
         const $card = $(this),
           $favPath = $card.find(".favorites-icon path"),
-          $likePath = $card.find(".like-icon path"),
-          favKey = "favorite-" + index,
-          likeKey = "like-" + index;
+          $likePath = $card.find(".like-icon path");
+
+        // Ensure unique data-id
+        let cardId = $card.data("id");
+        if (!cardId) {
+          cardId =
+            "blog-" + Date.now() + "-" + Math.floor(Math.random() * 1000);
+          $card.attr("data-id", cardId);
+        }
+
+        const favKey = "favorite-" + cardId,
+          likeKey = "like-" + cardId;
 
         // Restore saved state
         $favPath.css({
@@ -118,6 +154,7 @@ $(document).ready(function () {
               strokeWidth: isActive ? "0.04rem" : 0,
             });
             localStorage.setItem(favKey, !isActive);
+            updateBlogCount(); // optional if filtering by favorites
           });
 
         // Likes click
@@ -133,6 +170,7 @@ $(document).ready(function () {
               strokeWidth: isActive ? "0.04rem" : 0,
             });
             localStorage.setItem(likeKey, !isActive);
+            updateBlogCount(); // optional if filtering by liked
           });
       });
   }
@@ -156,10 +194,12 @@ $(document).ready(function () {
     $(".chip").removeClass("active");
     $(this).addClass("active");
 
-    $(".blog-card").each(function (index) {
-      const tag = $(this).find(".tag").text().toLowerCase().trim(),
-        isLiked = localStorage.getItem("like-" + index) === "true",
-        isFavorite = localStorage.getItem("favorite-" + index) === "true";
+    $(".blog-card").each(function () {
+      const $card = $(this),
+        cardId = $card.data("id"),
+        tag = $card.find(".tag").text().toLowerCase().trim(),
+        isLiked = localStorage.getItem("like-" + cardId) === "true",
+        isFavorite = localStorage.getItem("favorite-" + cardId) === "true";
 
       if (
         selected === "all" ||
@@ -167,11 +207,13 @@ $(document).ready(function () {
         (selected === "favorites" && isFavorite) ||
         tag === selected
       ) {
-        $(this).show();
+        $card.show();
       } else {
-        $(this).hide();
+        $card.hide();
       }
     });
+
+    updateBlogCount(); // <-- update count after filtering
   });
 
   // ===== TEXT TRUNCATE =====

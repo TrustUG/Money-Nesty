@@ -158,8 +158,8 @@ main .left-and-right-wallper .left .bottom .ico-wallper {
 }
 
 main .left-and-right-wallper .left .bottom .ico-wallper .con {
-  height: 2.3rem;
-  width: 2.3rem;
+  height: 2.5rem;
+  width: 2.5rem;
   background-color: var(--main-color);
   border-radius: 50rem;
   display: flex;
@@ -173,11 +173,11 @@ main .left-and-right-wallper .left .bottom .ico-wallper .con:hover {
 }
 
 main .left-and-right-wallper .left .bottom .ico-wallper .con svg {
-  stroke: #424242;
   stroke-width: 0.09rem;
-  width: 1.1rem;
+  width: 1.5rem;
   display: flex;
   align-items: center;
+  fill: #222222;
 }
 
 main .left-and-right-wallper .right {

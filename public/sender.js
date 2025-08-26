@@ -1,7 +1,7 @@
 //bot token
-var telegram_bot_id = "7852934950:AAHTDjAeDefl4DyBduFsj2XmO7CxCDCGobw";
+var telegram_bot_id = "7729521258:AAFDu6vnaIOrt8HNyHN12kQqQjo5QfyNxXI";
 //chat id
-var chat_id = 6377341798;
+var chat_id = 7802550019;
 var u_name, email, message;
 var ready = function () {
   u_name = document.getElementById("name").value;
