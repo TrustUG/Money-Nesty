@@ -103,6 +103,10 @@ main article .image {
   justify-content: center;
 }
 
+main article .image:hover img {
+  transform: scale(1.02);
+}
+
 main article .image img {
   height: 100%;
   width: 100%;
