@@ -594,6 +594,7 @@ main article a .image-cont img {
   align-items: center;
   justify-content: center;
   object-fit: cover;
+  /* height: 100%; */
 }
 
 main article a .image-cont .tag {
