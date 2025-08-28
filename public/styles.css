@@ -584,7 +584,7 @@ main article a .image-cont {
   position: relative;
 }
 
-main article a .image-cont:hover img {
+main article a:hover .image-cont img {
   transform: scale(1.02);
 }
 

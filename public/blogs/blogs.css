@@ -77,6 +77,31 @@ body {
 
 /* chips  */
 .chips-wallper {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  overflow-y: auto;
+  width: 100%;            /* allow resizing */
+  max-width: 1170px;      /* limit max width */
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 0.8rem;
+  border-radius: 0.5rem;
+  transition: padding 0.3s ease-in-out; /* smooth shrink */
+
+  /* fixed positioning */
+  background-color: var(--bg-color);
+  padding: 6.5rem 1.2rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+/* smaller padding when scrolled */
+.chips-wallper.scrolled {
+  padding: 6rem 1.2rem 1rem;
 }
 
 main {
@@ -85,6 +110,7 @@ main {
   align-items: start;
   justify-content: space-between;
   gap: 3.5rem;
+  padding: 4rem 0 .5rem;
 }
 
 main article {
@@ -419,7 +445,7 @@ main .maore-articles-wallper article .publisher .actions svg {
 
   /* blogs links  */
   main {
-    padding: 0.8rem 0;
+    padding: 4.5rem 0 0.8rem;
     gap: 2rem;
   }
 
@@ -514,7 +540,7 @@ main .maore-articles-wallper article .publisher .actions svg {
 
   /* blogs links  */
   main {
-    padding: 0.8rem 0.5rem;
+    padding: 8rem 0.5rem 0.8rem;
   }
 
   main article a h1,

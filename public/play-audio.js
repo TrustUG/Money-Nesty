@@ -1,4 +1,24 @@
 $(document).ready(function () {
+  $(".chips-wallper .chip").on("click", function () {
+    window.location.href = "../index.html";
+  });
+
+  let lastScrollTop = 0;
+
+  $(window).on("scroll", function () {
+    let currentScroll = $(this).scrollTop();
+
+    if (currentScroll > lastScrollTop) {
+      // scrolling down
+      $(".chips-wallper").addClass("scrolled");
+    } else {
+      // scrolling up
+      $(".chips-wallper").removeClass("scrolled");
+    }
+
+    lastScrollTop = currentScroll;
+  });
+
   $(".maore-articles-wallper").load("../index.html main > *", function () {
     // This runs AFTER the content is loaded
 
