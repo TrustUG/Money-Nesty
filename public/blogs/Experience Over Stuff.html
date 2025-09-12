@@ -21,6 +21,20 @@
     <script defer src="../play-audio.js"></script>
     <script defer src="../script.js"></script>
     <script defer src="../search.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZRV0GT85H2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-ZRV0GT85H2");
+    </script>
   </head>
   <body>
     <!-- header  -->
@@ -555,7 +569,10 @@
               ></path>
             </svg>
             <!-- play audio btn  -->
-            <div class="play-audio" data-audio="../audio/Experience Over Stuff.mp3">
+            <div
+              class="play-audio"
+              data-audio="../audio/Experience Over Stuff.mp3"
+            >
               <!-- play  -->
               <svg
                 id="play"

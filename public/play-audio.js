@@ -1,27 +1,23 @@
 $(document).ready(function () {
+  // ===== Chips click redirect =====
   $(".chips-wallper .chip").on("click", function () {
-    window.location.href = "../index.html";
+    window.location.href = "../index.html"; // keep ../
   });
 
+  // ===== Scroll effect =====
   let lastScrollTop = 0;
-
   $(window).on("scroll", function () {
     let currentScroll = $(this).scrollTop();
-
     if (currentScroll > lastScrollTop) {
-      // scrolling down
-      $(".chips-wallper").addClass("scrolled");
+      $(".chips-wallper").addClass("scrolled"); // scrolling down
     } else {
-      // scrolling up
-      $(".chips-wallper").removeClass("scrolled");
+      $(".chips-wallper").removeClass("scrolled"); // scrolling up
     }
-
     lastScrollTop = currentScroll;
   });
 
+  // ===== Load content from index.html =====
   $(".maore-articles-wallper").load("../index.html main > *", function () {
-    // This runs AFTER the content is loaded
-
     // Truncate h1
     $(".maore-articles-wallper h1").each(function () {
       const words = $(this).text().trim().split(/\s+/);
@@ -34,19 +30,35 @@ $(document).ready(function () {
       if (words.length > 10) $(this).text(words.slice(0, 10).join(" ") + "...");
     });
 
-    // Next articles
+    // Truncate "next" articles
     $(".maore-articles-wallper .next .next-box .discrip h1").each(function () {
       const words = $(this).text().trim().split(/\s+/);
       if (words.length > 8) $(this).text(words.slice(0, 8).join(" ") + "...");
     });
+
+    // Add verification icons
+    const verifiedPublishers = ["Ethan Carter", "Olivia Harper"];
+
+    $(".maore-articles-wallper .name").each(function () {
+      const $this = $(this);
+      const name = $this.text().trim();
+      if (verifiedPublishers.includes(name)) {
+        if (!$this.parent().hasClass("name-container")) {
+          $this.wrap('<div class="name-container"></div>');
+          $this
+            .parent()
+            .append(
+              '<img src="../images/logos/verified.png" class="verified-icon" alt="Verified">'
+            );
+        }
+      }
+    });
   });
 
+  // ===== Audio Logic =====
   const pageKey = window.location.pathname.replace(/\W/g, "_");
+  localStorage.removeItem(`audio-time-${pageKey}`); // reset audio on load
 
-  // Clear saved audio time on page load so audio always starts fresh
-  localStorage.removeItem(`audio-time-${pageKey}`);
-
-  // ===== Audio Play/Pause Logic =====
   let audio = null;
   const $playBtn = $(".image .blog-actions .play-audio");
   const audioSrc = $playBtn.data("audio");
@@ -55,9 +67,6 @@ $(document).ready(function () {
   if (audioSrc) {
     audio = new Audio(audioSrc);
 
-    // No resume time because cleared on page load
-
-    // Update icons based on playing state
     function showPlay() {
       $playBtn.find(".play").show();
       $playBtn.find(".pause").hide();
@@ -69,21 +78,17 @@ $(document).ready(function () {
       $playBtn.addClass("playing");
     }
 
-    // On audio end
     audio.onended = () => {
       showPlay();
       localStorage.removeItem(storageTimeKey);
     };
 
-    // Save current time periodically
     audio.ontimeupdate = () => {
       localStorage.setItem(storageTimeKey, audio.currentTime);
     };
 
-    // Initialize icons
     showPlay();
 
-    // Play/pause toggle button click
     $playBtn.on("click", function () {
       if (audio.paused) {
         audio.play();
@@ -95,7 +100,7 @@ $(document).ready(function () {
     });
   }
 
-  // ===== Favorites and Likes Logic =====
+  // ===== Favorites and Likes =====
   const $favoritesIcon = $(".image .blog-actions .favorites-icon");
   const $favoritesPath = $favoritesIcon.find("path");
   const favStorageKey = `favorite-${pageKey}`;
@@ -104,21 +109,18 @@ $(document).ready(function () {
   const $likePath = $likeIcon.find("path");
   const likeStorageKey = `like-${pageKey}`;
 
-  // Load saved favorite state
   if (localStorage.getItem(favStorageKey) === "true") {
     $favoritesPath.css({ fill: "#ffcc23", strokeWidth: 0 });
   } else {
     $favoritesPath.css({ fill: "none", strokeWidth: "0.6" });
   }
 
-  // Load saved like state
   if (localStorage.getItem(likeStorageKey) === "true") {
     $likePath.css({ fill: "#b80000", strokeWidth: 0 });
   } else {
     $likePath.css({ fill: "none", strokeWidth: "0.6" });
   }
 
-  // Toggle favorite
   $favoritesIcon.on("click", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -136,7 +138,6 @@ $(document).ready(function () {
     }
   });
 
-  // Toggle like
   $likeIcon.on("click", function (e) {
     e.preventDefault();
     e.stopPropagation();

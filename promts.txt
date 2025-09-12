@@ -354,3 +354,9 @@ Start today: List your debts, check your credit score, and explore one good debt
           Take the first step today—open an HYSA, automate a $10 transfer, and
           watch your fund grow.<br />
           Financial freedom starts with small, consistent actions.<br />"
+
+
+
+
+
+          firebase deploy --only hosting

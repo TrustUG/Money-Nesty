@@ -80,8 +80,8 @@ body {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE/Edge */
   overflow-y: auto;
-  width: 100%;            /* allow resizing */
-  max-width: 1170px;      /* limit max width */
+  width: 100%; /* allow resizing */
+  max-width: 1170px; /* limit max width */
   display: flex;
   align-items: center;
   justify-content: start;
@@ -110,7 +110,7 @@ main {
   align-items: start;
   justify-content: space-between;
   gap: 3.5rem;
-  padding: 4rem 0 .5rem;
+  padding: 4rem 0 0.5rem;
 }
 
 main article {
@@ -295,6 +295,9 @@ main article .info-art .dis {
 main article .info-art .dis .name {
   font-size: 0.8rem;
   text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  /* line-height: 0; */
 }
 
 main article .info-art .dis .date {
@@ -306,6 +309,21 @@ main article .info-art .dis .date {
 main article .next {
   margin-top: 2.5rem;
   max-width: 49rem;
+}
+
+.name-container {
+  position: relative; /* so the absolute icon knows where to anchor */
+  display: inline-block; /* keeps it inline with text */
+}
+
+.verified-icon {
+  margin-top: 0.1rem;
+  width: 0.9rem;
+  height: 0.9rem;
+  position: absolute;
+  top: 50%; /* move to middle */
+  transform: translateY(-50%); /* adjust back up half height */
+  margin-left: 0.3rem; /* space from the name */
 }
 
 main article .next .tite {
@@ -598,7 +616,7 @@ main .maore-articles-wallper article .publisher .actions svg {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.2rem .8rem 0;
+    padding: 1.2rem 0.8rem 0;
   }
 
   .header-cont header .left {

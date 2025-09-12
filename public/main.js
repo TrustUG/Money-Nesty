@@ -1,4 +1,37 @@
 $(document).ready(function () {
+  // Verification function (reusable)
+  function addVerificationIcons(context) {
+    const verifiedPublishers = ["Ethan Carter", "Olivia Harper"];
+
+    $(context)
+      .find(".name")
+      .each(function () {
+        const $this = $(this);
+        const name = $this.text().trim();
+        if (verifiedPublishers.includes(name)) {
+          if (!$this.parent().hasClass("name-container")) {
+            $this.wrap('<div class="name-container"></div>');
+            $this
+              .parent()
+              .append(
+                '<img src="../images/logos/verified.png" class="verified-icon" alt="Verified">'
+              );
+          }
+        }
+      });
+  }
+
+  // Run once on page load
+  addVerificationIcons(document);
+
+  // Run again when loading "more articles"
+  $(".maore-articles-wallper").load("../index.html main > *", function () {
+    // your truncation code ...
+
+    // add verification to loaded content
+    addVerificationIcons(".maore-articles-wallper");
+  });
+
   // ===== FUNCTION: UPDATE BLOG COUNT =====
   function updateBlogCount() {
     const visibleCount = $(".blog-card:visible").length;
