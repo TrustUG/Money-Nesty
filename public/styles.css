@@ -672,12 +672,23 @@ main article .publisher {
   width: 0.9rem;
   height: 0.9rem;
   position: absolute;
-  top: 50%;               /* move to middle */
+  top: 50%; /* move to middle */
   transform: translateY(-50%); /* adjust back up half height */
   margin-left: 0.3rem;
   margin-top: 0.1rem;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  white-space: nowrap; /* keep text on a single line */
+}
 
 main article .publisher .info {
   display: flex;
